@@ -1,9 +1,7 @@
 function calculate() {
 	var getting = document.getElementById("food");
 	var whichfood = getting.options[getting.selectedIndex].value;
-	run(whichfood);
-	cycle(whichfood);
-	swim(whichfood);
+	foodcal(whichfood);
 }
 
 function run(x) {
@@ -26,4 +24,31 @@ function swim(x) {
 	var real = r.toFixed(2);
 	document.getElementById("result3").innerHTML = "You have to swim at a moderate pace for " + real + " minutes to burn off that item(s)";
 
+}
+function foodcal(food){
+	var a;
+	switch(food) {
+		case "Big Mac":
+			a = "563";
+			run(a);
+			cycle(a);
+			swim(a);
+			break;
+		case "Whooper":
+			a = "677";
+			run(a);
+			cycle(a);
+			swim(a);
+			break;
+		case "Dave's Single from Wendy's":
+			a = "550";
+			run(a);
+			cycle(a);
+			swim(a);
+			break;
+		default:
+			document.getElementById("result1").innerHTML = "error";
+			document.getElementById("result2").innerHTML = "error";
+			document.getElementById("result3").innerHTML = "error";
+	}
 }

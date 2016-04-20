@@ -19,13 +19,13 @@ session_start();
 	<div class="left">
 	<fieldset>
 	<legend><strong>Select your answer below!</strong></legend>
-	<form name="myform" method="GET" onsubmit="return false;">
-			<select id="food" name="foodchoice">
-				<option name = "which" value="563"> Big Mac</option>
-	 			<option name = "which" value="677"> Whooper</option>
-	 			<option name = "which" value="550"> Dave's Single from Wendy's</option>
+	<form name="myform" method="GET">
+			<select id="food" name="foodchoice" onclick="return false;">
+				<option name = "which" value="Big Mac"> Big Mac</option>
+	 			<option name = "which" value="Whooper"> Whooper</option>
+	 			<option name = "which" value="Dave's Single from Wendy's"> Dave's Single from Wendy's</option>
 			</select>
-			<input type="submit" value="Submit" onclick="calculate();">
+			<input type="submit" name = "go" value="Submit" onclick="calculate();">
 			<input type="reset" value="Reset">
 	</form>
 	</fieldset>
@@ -36,7 +36,6 @@ session_start();
 	<p id="result1"></p>
 	<p id="result2"></p>
 	<p id="result3"></p>
-	<p> <?php echo $_SESSION["user"]; ?> </p>
 	</fieldset>
 	</div>
 </div>
@@ -80,6 +79,15 @@ session_start();
 			}
 		}
 		all($dbnow, $find);
+		if (isset($_GET["go"])){
+			//INSERT INTO `fooduser` VALUES ("wudh@bc.edu", "Big Mac", now());
+			$one = $_SESSION["user"];
+			$two = $_GET["foodchoice"];
+			$comm = "INSERT INTO fooduser VALUES (\"$one\",\"$two\", now());";
+			perform_query($dbnow, $comm);
+			echo "<script> window.location.assign(\"http://cscilab.bc.edu/~wudh/project/main.php\"); </script>";
+
+		}
 		?>
 	</tbody>
 </table>
