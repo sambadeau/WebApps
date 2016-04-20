@@ -1,5 +1,6 @@
 <?php
 include('dbconn.php');
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +90,11 @@ function handle_form( $id, $pw){
 
 		if ($useremail == $email) {
 			if(sha1($userpw) == $pw) {
-				echo "Log in Successful!";
+				session_unset();
+				$_SESSION["user"] = $email;
+				echo '<script type="text/javascript">
+				document.location="http://cscilab.bc.edu/~wudh/project/main.php";
+				</script>';
 			}
 			else {
 				echo "Wrong Password!";
