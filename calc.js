@@ -1,7 +1,5 @@
-function calculate() {
-	var getting = document.getElementById("food");
-	var whichfood = getting.options[getting.selectedIndex].value;
-	foodcal(whichfood);
+function calculate(a, b, c, d) {
+	foodcal(a);
 }
 
 function run(x) {
@@ -25,8 +23,11 @@ function swim(x) {
 	document.getElementById("result3").innerHTML = "You have to swim at a moderate pace for " + real + " minutes to burn off that item(s)";
 
 }
-function foodcal(food){
-	var a;
+function foodcal(a, b, c, d){
+	var bfast;
+	var lunch;
+	var dinner;
+	var dessert;
 	switch(food) {
 		case "Big Mac":
 			a = "563";
@@ -50,5 +51,14 @@ function foodcal(food){
 			document.getElementById("result1").innerHTML = "error";
 			document.getElementById("result2").innerHTML = "error";
 			document.getElementById("result3").innerHTML = "error";
+			document.getElementById("result4").innerHTML = "error";
+			document.getElementById("result5").innerHTML = "error";
+			document.getElementById("result6").innerHTML = "error";
+			document.getElementById("result7").innerHTML = "error";
+			document.getElementById("result8").innerHTML = "error";
+			document.getElementById("result9").innerHTML = "error";
+			document.getElementById("result10").innerHTML = "error";
+			document.getElementById("result11").innerHTML = "error";
+			document.getElementById("result12").innerHTML = "error";
 	}
 }
