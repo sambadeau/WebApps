@@ -41,7 +41,7 @@ session_start();
 function handle_form( $id ){
 
 	$dbc    = connect_to_db( "hwangmn" );
-	$query  = "select * from food";
+	$query  = "select * from accounts";
 	$result = perform_query( $dbc, $query );
 
 	$username = $_POST['name'];
