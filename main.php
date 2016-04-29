@@ -122,9 +122,11 @@ function displayForm() {
 			<th>Email</th>
 			<th>Food</th>
 			<th>InputTime</th>
+			<th>Type</th>
+			<th>Calories</th>
 		</tr>
 		<?php
-		$find = "SELECT * FROM fooduser";
+		$always = "SELECT * FROM fooduser";
 		$dbnow = connect_to_db( "hwangmn" );
 
 		function phpcalc($a, $b, $c, $d, $e, $dbnow, $history){
@@ -156,11 +158,12 @@ function displayForm() {
 			echo "<script type=\"text/javascript\">
 					calculate(".$a.",".$b.",".$c.",".$d.",".$e.");
 				  </script>";
+
 		}
 
-		function all($dbnow, $find) {
+		function all($dbnow, $always) {
 			$counter = 1;
-			if ($r = perform_query($dbnow, $find)) {
+			if ($r = perform_query($dbnow, $always)) {
 			    while ($row = mysqli_fetch_assoc($r)) {
 			    		if ($_SESSION["user"] == $row["Email"]) {
 							$e = $row["Email"];
@@ -211,7 +214,7 @@ function displayForm() {
 								}
 							}
 					}
-					$comm1 = "INSERT INTO fooduser VALUES (\"$one\",\"$two\", now(), \"$t1\", \"c1\");";
+					$comm1 = "INSERT INTO fooduser VALUES (\"$one\",\"$two\", now(), \"$t1\", \"$c1\");";
 					perform_query($dbnow, $comm1);
 				}
 			}
@@ -225,7 +228,7 @@ function displayForm() {
 								}
 							}
 					}
-					$comm2 = "INSERT INTO fooduser VALUES (\"$one\",\"$three\", now(), \"$t2\", \"c2\");";
+					$comm2 = "INSERT INTO fooduser VALUES (\"$one\",\"$three\", now(), \"$t2\", \"$c2\");";
 					perform_query($dbnow, $comm2);
 				}
 			}
@@ -239,8 +242,8 @@ function displayForm() {
 								}
 							}
 					}
-					$comm3 = "INSERT INTO fooduser VALUES (\"$one\",\"$four\", now(), \"$t3\", \"c3\");";
-					perform_query($dbnow, $com3);
+					$comm3 = "INSERT INTO fooduser VALUES (\"$one\",\"$four\", now(), \"$t3\", \"$c3\");";
+					perform_query($dbnow, $comm3);
 				}
 			}
 			if (isset($_GET["foodchoice4"])) {
@@ -253,7 +256,7 @@ function displayForm() {
 								}
 							}
 					}
-					$comm4 = "INSERT INTO fooduser VALUES (\"$one\",\"$five\", now(), \"$t4\", \"c4\");";
+					$comm4 = "INSERT INTO fooduser VALUES (\"$one\",\"$five\", now(), \"$t4\", \"$c4\");";
 					perform_query($dbnow, $comm4);
 				}
 			}
@@ -267,12 +270,12 @@ function displayForm() {
 								}
 							}
 					}
-					$comm5 = "INSERT INTO fooduser VALUES (\"$one\",\"$six\", now(), \"$t5\", \"c5\");";
+					$comm5 = "INSERT INTO fooduser VALUES (\"$one\",\"$six\", now(), \"$t5\", \"$c5\");";
 					perform_query($dbnow, $comm5);
 				}
 			}
 		}
-		all($dbnow, $find);
+		all($dbnow, $always);
 		?>
 	</tbody>
 </table>
