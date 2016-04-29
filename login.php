@@ -6,36 +6,54 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" href="css/style10.css"/>
+	<link rel="stylesheet" href="bootstrap.css">
 	<script type="text/javascript"src="../include/valid.js"></script>
 	<meta charset="utf-8" />
 	<title>Welcome To Calorie Calculator</title>
+
+	<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 </head>
 <body>
-	<pre><?php //print_r($_POST); ?></pre>
-<fieldset>
-	<h1>Diet Is Fun!</h1>
-	<img src="diet.jpg" alt="food pic" height="360" width="600">
 
-	<form action='dboperation.php'>
-		<input type="submit" name = "join" value= "Don't Have an Account? Sign Up!">
-	</form>
-
-	<fieldset>
-		<legend> Please Login to Access Your Calorie Log! </legend>
-
-	<form method= 'post' name = 'myForm' onsubmit = 'return validateForm2()'>
-			E-mail:
-			<input type = 'text' name= 'email' size= '40'> <br>
-			PassWord:
-			<input type = 'text' name= 'pw' size= '40'> <br>
-
-			<input type='submit' value = 'Login' name = 'submit'> <br>
+	<div class="jumbotron">
+		<h1> Diet Is Easy & Fun <small> with Calorie Calulator</small> </h1>
+		<form action='dboperation.php'>
+		<input type="submit" name = "join" class="col-xs-5 col-md-3 col-lg-1 btn btn-info btn-md" value= "Sign Up!">
 	</form>
 
 	<form method = 'post'>
-			<input type="submit" name = "pwlost" value= "Forgot Your Password?">
+		<input type="submit" name = "pwlost" class="btn btn-danger btn-md col-xs-5 col-md-3 col-lg-1"  value= "Forgot Password?">
 	</form>
+
+	</div>
+	<div class = "container">
+
+	<img src="diet.jpg" align = "right" class = "img-responsive img-thumbnail img-rounded" alt="Norway" style="width:50%">
+
+		<legend> Please Login to Access Your Calorie Log! </legend>
+
+	<form method= 'post' name = 'myForm' onsubmit = 'return validateForm2()'>
+
+		<fieldset class="form-group">
+		<label> Username</label>
+		<input type="text" class="form-control" name= 'email' placeholder="Enter Username">
+		</fieldset>
+
+		<fieldset class="form-group">
+		<label>Password</label>
+	    <input type="password" name= 'pw' class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
+	  	</fieldset>
+
+		<input type='submit' value = 'Login' name = 'submit' class="btn btn-warning btn-lg" > <br>
+	</form>
+
+	</div>
 
 	<?php
 
@@ -44,6 +62,7 @@ session_start();
 	?>
 
 	</fieldset>
+
 
 	<?php
 
@@ -85,7 +104,7 @@ function handle_form( $id, $pw){
 
 	while ($row = mysqli_fetch_array( $result, MYSQLI_ASSOC )){
 
-		$email = $row['email'];
+		$email = $row['username'];
 		$pw = $row['password'];
 
 		if ($useremail == $email) {
