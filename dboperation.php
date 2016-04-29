@@ -73,7 +73,7 @@ function handle_form( $id ){
 		}
 	}
 
-	$newquery = "INSERT INTO `food`(`username`, `email`, `password`, `regidate`) VALUES ('$username', '$useremail', sha('$userpw1'), now())";
+	$newquery = "INSERT INTO `accounts`(`username`, `email`, `password`, `regidate`) VALUES ('$username', '$useremail', sha('$userpw1'), now())";
 	perform_query( $dbc, $newquery );
 	echo "Thank You For Joining the Club!
 		<form action='http://cscilab.bc.edu/~hwangmn/final/login.php'>

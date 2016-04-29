@@ -1,6 +1,84 @@
 <?php
 include('dbconn.php');
 session_start();
+
+function displayForm() {
+	$dbnow = connect_to_db( "hwangmn" );
+	$find = "SELECT * FROM fooduser";
+	$find1 = "SELECT * FROM food WHERE Type = \"Breakfast\"";
+	$find2 = "SELECT * FROM food WHERE Type = \"Lunch\"";
+	$find3 = "SELECT * FROM food WHERE Type = \"Dinner\"";
+	$find4 = "SELECT * FROM food WHERE Type = \"Dessert\"";
+	$find5 = "SELECT * FROM food WHERE Type = \"Drink\"";
+	echo "<p>Breakfast options</p>";
+	echo '<select name="foodchoice1">';
+		echo '<option value="Select an option">Select an option</option>';
+	if ($r = perform_query($dbnow, $find1)) {
+		while ($row = mysqli_fetch_assoc($r)) {
+			if ($row["Food"] != "Select an option"){
+				$name = $row["Food"];
+				$c = $row["Calories"];
+				echo "<option value=\"".$name."\">".$name."</option>";
+			}
+		}
+	}
+	echo "</select>";
+	echo "<p>Lunch options</p>";
+	echo '<select name="foodchoice2">';
+		echo '<option value="Select an option">Select an option</option>';
+	if ($r = perform_query($dbnow, $find2)) {
+			while ($row = mysqli_fetch_assoc($r)) {
+				if ($row["Food"] != "Select an option"){
+					$name = $row["Food"];
+					$c = $row["Calories"];
+					echo "<option value=\"".$name."\">".$name."</option>";
+				}
+			}
+	}
+	echo "</select>";
+	echo "<p>Dinner options</p>";
+	echo '<select name="foodchoice3">';
+		echo '<option value="Select an option">Select an option</option>';
+	if ($r = perform_query($dbnow, $find3)) {
+			while ($row = mysqli_fetch_assoc($r)) {
+				if ($row["Food"] != "Select an option"){
+					$name = $row["Food"];
+					$c = $row["Calories"];
+					echo "<option value=\"".$name."\">".$name."</option>";
+				}
+			}
+	}
+	echo "</select>";
+	echo "<p>Dessert options</p>";
+	echo '<select name="foodchoice4">';
+		echo '<option value="Select an option">Select an option</option>';
+	if ($r = perform_query($dbnow, $find4)) {
+			while ($row = mysqli_fetch_assoc($r)) {
+				if ($row["Food"] != "Select an option"){
+					$name = $row["Food"];
+					$c = $row["Calories"];
+					echo "<option value=\"".$name."\">".$name."</option>";
+				}
+			}
+	}
+	echo "</select>";
+	echo "<p>Drink options</p>";
+	echo '<select name="foodchoice5">';
+		echo '<option value="Select an option">Select an option</option>';
+	if ($r = perform_query($dbnow, $find5)) {
+			while ($row = mysqli_fetch_assoc($r)) {
+				if ($row["Food"] != "Select an option"){
+					$name = $row["Food"];
+					$c = $row["Calories"];
+					echo "<option value=\"".$name."\">".$name."</option>";
+				}
+			}
+	}
+	echo "</select>";
+	echo "<br><br>";
+	echo'<input type="submit" name="go">';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +86,6 @@ session_start();
 <head>
 	<meta charset="utf-8" />
 	<title>Main Page</title>
-	<script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <script src="calc.js"></script>
@@ -21,43 +98,19 @@ session_start();
 	<fieldset>
 	<legend><strong>Select your answer below!</strong></legend>
 	<form name="myform" method="GET">
-			<p>Breakfast options</p>
-			<select id="food1" name="foodchoice1">
-				<option name = "which" value="Select a option"> Select an option</option>
-				<option name = "which" value="Toast"> Toast</option>
-	 			<option name = "which" value="Bacon"> Bacon</option>
-	 			<option name = "which" value="Hard boiled egg"> Dave's Single from Wendy's</option>
-			</select>
-			<p>Lunch options</p>
-			<select id="food2" name="foodchoice2">
-				<option name = "which" value="Select a option"> Select an option</option>
-				<option name = "which" value="Big Mac"> Big Mac</option>
-				<option name = "which" value="Whooper"> Whooper</option>
-				<option name = "which" value="Dave's Single from Wendy's"> Dave's Single from Wendy's</option>
-			</select>
-			<p>Dinner options</p>
-			<select id="food3" name="foodchoice3">
-				<option name = "which" value="Select a option"> Select an option</option>
-				<option name = "which" value="Big Mac"> Big Mac</option>
-				<option name = "which" value="Whooper"> Whooper</option>
-				<option name = "which" value="Dave's Single from Wendy's"> Dave's Single from Wendy's</option>
-			</select>
-			<p>Dessert options</p>
-			<select id="food4" name="foodchoice4">
-				<option name = "which" value="Select a option"> Select an option</option>
-				<option name = "which" value="Cheesecake"> Big Mac</option>
-				<option name = "which" value="Key-Lime Pie"> Whooper</option>
-				<option name = "which" value="A Scoop of Vanilla Ice Cream"> Dave's Single from Wendy's</option>
-			</select>
-			<br><br>
-			<input type="submit" name = "go" value="Submit">
+			<?php
+				displayForm();
+			?>
 	</form>
 	</fieldset>
 	</div>
 		<div class="right">
 		<?php
+		$dbnow = connect_to_db( "hwangmn" );
+		$find = "SELECT * FROM fooduser";
+		$history = "SELECT * FROM food";
 		if(isset($_GET["go"])){
-			phpcalc($_GET["foodchoice1"], $_GET["foodchoice2"], $_GET["foodchoice3"], $_GET["foodchoice4"]);
+			phpcalc($_GET["foodchoice1"], $_GET["foodchoice2"], $_GET["foodchoice3"], $_GET["foodchoice4"], $_GET["foodchoice5"], $dbnow, $history);
 		}
 		?>
 		</div>
@@ -73,15 +126,35 @@ session_start();
 		<?php
 		$find = "SELECT * FROM fooduser";
 		$dbnow = connect_to_db( "hwangmn" );
-		function phpcalc($a, $b, $c, $d){
+
+		function phpcalc($a, $b, $c, $d, $e, $dbnow, $history){
 			echo "
 			<fieldset>
 				<p id=\"result1\"></p>
 				<p id=\"result2\"></p>
 				<p id=\"result3\"></p>
 			</fieldset>";
+			if ($r = perform_query($dbnow, $history)) {
+			    while ($row = mysqli_fetch_assoc($r)) {
+			    	if ($a == $row["Food"]) {
+			    		$a = $row["Calories"];
+			    	}
+			    	elseif ($b == $row["Food"]) {
+						$b = $row["Calories"];
+			    	}
+			    	elseif ($c == $row["Food"]) {
+						$c = $row["Calories"];
+			    	}
+			    	elseif ($d == $row["Food"]) {
+						$d = $row["Calories"];
+			    	}
+			    	elseif ($e == $row["Food"]) {
+						$e = $row["Calories"];
+			    	}
+			    }
+			}
 			echo "<script type=\"text/javascript\">
-					calculate(\"".$a."\",\"".$b."\",\"".$c."\",\"".$d."\");
+					calculate(".$a.",".$b.",".$c.",".$d.",".$e.");
 				  </script>";
 		}
 
@@ -93,11 +166,15 @@ session_start();
 							$e = $row["Email"];
 							$f = $row["Food"];
 							$t = $row["InputTime"];
+							$ty = $row["Type"];
+							$c = $row["Calories"];
 			       			if ($counter%2 == 1) {
 			       				echo "<tr>
 			       						<td>".$e."</td>
 			       						<td>".$f."</td>
 			       						<td>".$t."</td>
+			       						<td>".$ty."</td>
+			       						<td>".$c."</td>
 			       					 </tr>";
 			       				$counter = $counter + 1;
 			       			}
@@ -106,6 +183,8 @@ session_start();
 										<td>".$e."</td>
 										<td>".$f."</td>
 										<td>".$t."</td>
+										<td>".$ty."</td>
+										<td>".$c."</td>
 			       					 </tr>";
 			       				$counter = $counter + 1;
 			       			}
@@ -114,11 +193,84 @@ session_start();
 			}
 		}
 		if (isset($_GET["go"])){
+			$getgoing = $find = "SELECT * FROM food";
 			//INSERT INTO `fooduser` VALUES ("wudh@bc.edu", "Big Mac", now());
 			$one = $_SESSION["user"];
-			$two = $_GET["foodchoice"];
-			$comm = "INSERT INTO fooduser VALUES (\"$one\",\"$two\", now());";
-			perform_query($dbnow, $comm);
+			$two = $_GET["foodchoice1"];
+			$three = $_GET["foodchoice2"];
+			$four = $_GET["foodchoice3"];
+			$five = $_GET["foodchoice4"];
+			$six = $_GET["foodchoice5"];
+			if (isset($_GET["foodchoice1"])) {
+				if ($_GET["foodchoice1"] != "Select an option"){
+					if ($r = perform_query($dbnow, $getgoing)) {
+							while ($row = mysqli_fetch_assoc($r)) {
+								if ($row["Food"] == $two){
+									$t1 = $row["Type"];
+									$c1 = $row["Calories"];
+								}
+							}
+					}
+					$comm1 = "INSERT INTO fooduser VALUES (\"$one\",\"$two\", now(), \"$t1\", \"c1\");";
+					perform_query($dbnow, $comm1);
+				}
+			}
+			if (isset($_GET["foodchoice2"])) {
+				if ($_GET["foodchoice2"] != "Select an option"){
+					if ($r = perform_query($dbnow, $getgoing)) {
+							while ($row = mysqli_fetch_assoc($r)) {
+								if ($row["Food"] == $three){
+									$t2 = $row["Type"];
+									$c2 = $row["Calories"];
+								}
+							}
+					}
+					$comm2 = "INSERT INTO fooduser VALUES (\"$one\",\"$three\", now(), \"$t2\", \"c2\");";
+					perform_query($dbnow, $comm2);
+				}
+			}
+			if (isset($_GET["foodchoice3"])) {
+				if ($_GET["foodchoice3"] != "Select an option"){
+					if ($r = perform_query($dbnow, $getgoing)) {
+							while ($row = mysqli_fetch_assoc($r)) {
+								if ($row["Food"] == $four){
+									$t3 = $row["Type"];
+									$c3 = $row["Calories"];
+								}
+							}
+					}
+					$comm3 = "INSERT INTO fooduser VALUES (\"$one\",\"$four\", now(), \"$t3\", \"c3\");";
+					perform_query($dbnow, $com3);
+				}
+			}
+			if (isset($_GET["foodchoice4"])) {
+				if ($_GET["foodchoice4"] != "Select an option"){
+					if ($r = perform_query($dbnow, $getgoing)) {
+							while ($row = mysqli_fetch_assoc($r)) {
+								if ($row["Food"] == $five){
+									$t4 = $row["Type"];
+									$c4 = $row["Calories"];
+								}
+							}
+					}
+					$comm4 = "INSERT INTO fooduser VALUES (\"$one\",\"$five\", now(), \"$t4\", \"c4\");";
+					perform_query($dbnow, $comm4);
+				}
+			}
+			if (isset($_GET["foodchoice5"])) {
+				if ($_GET["foodchoice5"] != "Select an option"){
+					if ($r = perform_query($dbnow, $getgoing)) {
+							while ($row = mysqli_fetch_assoc($r)) {
+								if ($row["Food"] == $six){
+									$t5 = $row["Type"];
+									$c5 = $row["Calories"];
+								}
+							}
+					}
+					$comm5 = "INSERT INTO fooduser VALUES (\"$one\",\"$six\", now(), \"$t5\", \"c5\");";
+					perform_query($dbnow, $comm5);
+				}
+			}
 		}
 		all($dbnow, $find);
 		?>

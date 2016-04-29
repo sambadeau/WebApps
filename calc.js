@@ -1,5 +1,9 @@
-function calculate(a, b, c, d) {
-	foodcal(a);
+function calculate(a, b, c, d, e) {
+	var total;
+	total = a + b + c + d + e;
+	run(total);
+	cycle(total);
+	swim(total);
 }
 
 function run(x) {
@@ -22,43 +26,4 @@ function swim(x) {
 	var real = r.toFixed(2);
 	document.getElementById("result3").innerHTML = "You have to swim at a moderate pace for " + real + " minutes to burn off that item(s)";
 
-}
-function foodcal(a, b, c, d){
-	var bfast;
-	var lunch;
-	var dinner;
-	var dessert;
-	switch(food) {
-		case "Big Mac":
-			a = "563";
-			run(a);
-			cycle(a);
-			swim(a);
-			break;
-		case "Whooper":
-			a = "677";
-			run(a);
-			cycle(a);
-			swim(a);
-			break;
-		case "Dave's Single from Wendy's":
-			a = "550";
-			run(a);
-			cycle(a);
-			swim(a);
-			break;
-		default:
-			document.getElementById("result1").innerHTML = "error";
-			document.getElementById("result2").innerHTML = "error";
-			document.getElementById("result3").innerHTML = "error";
-			document.getElementById("result4").innerHTML = "error";
-			document.getElementById("result5").innerHTML = "error";
-			document.getElementById("result6").innerHTML = "error";
-			document.getElementById("result7").innerHTML = "error";
-			document.getElementById("result8").innerHTML = "error";
-			document.getElementById("result9").innerHTML = "error";
-			document.getElementById("result10").innerHTML = "error";
-			document.getElementById("result11").innerHTML = "error";
-			document.getElementById("result12").innerHTML = "error";
-	}
 }
