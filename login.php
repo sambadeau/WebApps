@@ -126,7 +126,7 @@ function handle_form1( $id ){
 			echo "Hi! Thanks for the enquery! Your Password will be sent to you shortly to your e-mail!";
 
 			$newpw = newpass();
-			$query1 = "UPDATE `accounts` SET `password` = sha1('$newpw') WHERE `email` = '$useremail' ";
+			$query1 = "UPDATE `food` SET `password` = sha1('$newpw') WHERE `email` = '$useremail' ";
 			perform_query($dbc, $query1);
 
 			mail("$useremail", "Your New Calorie Log Account Password!", $newpw);

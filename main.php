@@ -75,6 +75,13 @@ function displayForm() {
 			}
 	}
 	echo "</select>";
+	echo "<p>Exercise options</p>";
+	echo '<select name="Exercise">
+			<option value="Select an exercise">Select an exercise</option>
+					<option value="Run">Run</option>
+					<option value="Cycle">Cycle</option>
+					<option value="Swim">Swim</option>
+			  </select>';
 	echo "<br><br>";
 	echo'<input type="submit" name="go">';
 }
@@ -94,14 +101,13 @@ function displayForm() {
 <h1 style="text-align: center">Log in successful! Hello <?php echo $_SESSION["user"]; ?>!</h1>
 
 <div class="containall">
+<form name="myform" method="GET">
 	<div class="left">
 	<fieldset>
 	<legend><strong>Select your answer below!</strong></legend>
-	<form name="myform" method="GET">
 			<?php
 				displayForm();
 			?>
-	</form>
 	</fieldset>
 	</div>
 		<div class="right">
@@ -110,10 +116,11 @@ function displayForm() {
 		$find = "SELECT * FROM fooduser";
 		$history = "SELECT * FROM food";
 		if(isset($_GET["go"])){
-			phpcalc($_GET["foodchoice1"], $_GET["foodchoice2"], $_GET["foodchoice3"], $_GET["foodchoice4"], $_GET["foodchoice5"], $dbnow, $history);
+			phpcalc($_GET["foodchoice1"], $_GET["foodchoice2"], $_GET["foodchoice3"], $_GET["foodchoice4"], $_GET["foodchoice5"], $dbnow, $history, $_GET["Exercise"]);
 		}
 		?>
 		</div>
+</form>
 </div>
 <br><br>
 <table style="width:100%">
@@ -126,15 +133,13 @@ function displayForm() {
 			<th>Calories</th>
 		</tr>
 		<?php
-		$always = "SELECT * FROM fooduser";
+		$always = "SELECT * FROM fooduser ORDER BY InputTime ASC";
 		$dbnow = connect_to_db( "hwangmn" );
 
-		function phpcalc($a, $b, $c, $d, $e, $dbnow, $history){
+		function phpcalc($a, $b, $c, $d, $e, $dbnow, $history, $exer){
 			echo "
 			<fieldset>
-				<p id=\"result1\"></p>
-				<p id=\"result2\"></p>
-				<p id=\"result3\"></p>
+				<p id=\"result\"></p>
 			</fieldset>";
 			if ($r = perform_query($dbnow, $history)) {
 			    while ($row = mysqli_fetch_assoc($r)) {
@@ -155,10 +160,9 @@ function displayForm() {
 			    	}
 			    }
 			}
-			echo "<script type=\"text/javascript\">
-					calculate(".$a.",".$b.",".$c.",".$d.",".$e.");
+		echo "<script type=\"text/javascript\">
+					calculate(".$a.",".$b.",".$c.",".$d.",".$e.",\"".$exer."\");
 				  </script>";
-
 		}
 
 		function all($dbnow, $always) {
@@ -279,6 +283,17 @@ function displayForm() {
 		?>
 	</tbody>
 </table>
+<br><br>
+<form method="GET" >
+<button input type="submit" name="Logout" style="text-align: center">Log out</button>
+</form>
+<?php
+	if (isset($_GET["Logout"])) {
+		echo '<script type="text/javascript">
+				document.location="http://cscilab.bc.edu/~wudh/project/login.php";
+			</script>';
+	}
+?>
 
 </body>
 </html>
