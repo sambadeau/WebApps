@@ -5,34 +5,60 @@ include('dbconn.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<link rel="stylesheet" href="bootstrap.css">
 	<script type="text/javascript"src="include/valid.js"></script>
 	<meta charset="utf-8" />
 	<title>Admin Page</title>
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
 </head>
 <body>
-	<h1> Admin Page For Calorie Calculator </h1>
+	<div class="jumbotron">
+	<h1> Admin Page <small> for Calorie Calulator</small> </h1>
+	</div>
 
 	<col><col><col><col>
+
+	<div class="container">
 
 	<?php
 
 		table();
 	?>
 
+	</div>
 
-<fieldset>
+	<div class= "panel panel-default">
+	  			<!-- Default panel contents -->
+	  			<div class= "panel-heading">Delete A Pesky Member</div>
+	  			<div class= "panel-body ">
 
-	<legend> Delete A Pesky Member </legend>
+  	</div>
 
 	<form method = 'post' name = 'myForm' onsubmit = 'return validateForm1()'>
+	<fieldset class="form-group">
+	<label>Username of the Doomed</label>
+	<input type="text" name= 'subject' class="form-control" id="exampleInputEmail1" placeholder="Enter Username">
+	</fieldset>
 
-	Username of the Doomed <input type = 'text' name= 'subject' size= '40'> <br>
-	Your Last Words to the Poor Soul <input type = 'text' name= 'msg' size = '100' height="100" width="200"> <br>
+	<fieldset class="form-group">
+	    <label>Your Last Words to the Poor Soul</label>
+	    <textarea class="form-control" name= 'msg' id="exampleTextarea" rows="3"></textarea>
+  	</fieldset>
 
-	French Dictator Password <input type = 'password' name= 'pw' size= '20'> <br>
+  	<fieldset class="form-group">
+	    <label> French Dictator Password</label>
+	    <input type="password" name= 'pw' class="form-control" id="exampleInputPassword1" placeholder="It's Napoleon">
+  	</fieldset>
 
-	<input type='submit' value = 'Deprive This Person From Healthy LifeStyle' name = 'submit'> <br>
+	<input type='submit' value = 'Deprive This Person of Healthy Lifestyle' name = 'submit'> <br>
 
 	<?php
 
@@ -42,8 +68,6 @@ include('dbconn.php');
 
 	</form>
 
-</fieldset>
-
 </body>
 </html>
 
@@ -51,7 +75,7 @@ include('dbconn.php');
 
 function handle_form($pw){
 	if (sha1($pw) != '1785ed6ccf537856a2e5d0935a1ffb2dde2d3ab5') {
-		echo "Invalid Password";
+		echo "Invalid Napoleon Password... Can You Spell?";
 		return;
 	}
 
@@ -86,12 +110,17 @@ function table() {
 	$query  = "select * from accounts";
 	$result = perform_query( $dbc, $query );
 
-	echo "<table>";
+	echo "<div class=\"panel panel-default\">
+  			<!-- Default panel contents -->
+  			<div class=\"panel-heading\">Current User Lists</div>
+  			<div class=\"panel-body\">
 
-	echo "<tr><td> username </td><td> password </td><td> email </td><td> regidate </td></tr>";
+  		</div><table class=\"table table-striped table-hover\">";
+
+	echo "<tr><th> Username </th><th> E-mail </th><th> Registration Date </th></tr>";
 
 	while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-		echo "<tr><td>" . $row['username'] . "</td><td>" . $row['password'] . "</td><td>" . $row['email'] . "</td><td>" . $row['regidate'] . "</td></tr>";
+		echo "<tr><td>" . $row['username'] . "</td><td>" . $row['email'] . "</td><td>" . $row['regidate'] . "</td></tr>";
 	}
 
 	echo "</table>";
