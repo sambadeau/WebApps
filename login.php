@@ -8,6 +8,37 @@ session_start();
 <head>
 	<link rel="stylesheet" href="bootstrap.css">
 	<script type="text/javascript"src="../include/valid.js"></script>
+	<style type="text/css">
+	#container{width:100%;}
+	#left{float:left;width:100px;}
+	#right{float:right;width:100px;}
+	#center{margin:0 auto;width:100px;}
+	.news {
+    overflow: auto;
+    height: 300px;
+    border: 3px groove blue;
+    width: 305px;
+    float:left;
+	}	
+	.news2 {
+    overflow: auto;
+    height: 300px;
+    border: 3px groove blue;
+    width: 250px;
+    float: center;
+	}	
+	.news3 {
+    overflow: auto;
+    height: 300px;
+    border: 3px groove blue;
+    width: 250px;
+    float: right;
+	}
+	
+	h1{
+		font-size: 20px;
+	}
+</style>
 	<meta charset="utf-8" />
 	<title>Welcome To Calorie Calculator</title>
 
@@ -20,7 +51,6 @@ session_start();
 
 </head>
 <body>
-
 	<div class="jumbotron">
 		<h1> Diet Is Easy & Fun <small> with Calorie Calulator</small> </h1>
 		<form action='dboperation.php'>
@@ -52,9 +82,53 @@ session_start();
 
 		<input type='submit' value = 'Login' name = 'submit' class="btn btn-warning btn-lg" > <br>
 	</form>
+<div id="container">
+<div class="news">
+	<?php
+	echo "<h2>Yahoo Fitness RSS Feed</h2>";
+	ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)');
+	$xml = new SimpleXMLElement(file_get_contents("http://www.self.com/feed/fitness"));
+	for($i = 0; $i < 50; $i++){
+		$title = $xml->channel->item[$i]->title;
+		$link = $xml->channel->item[$i]->link;
+		$description = $xml->channel->item[$i]->description;
+		echo "<h1><a href='$link'>$title</a></h1><br><p>$description</p><br>";
+		
+	}
+		?>
+</div>
 
-	</div>
-
+<div class="news">
+	<?php
+	echo "<h2>Fitness Gear RSS Feed</h2>";
+	ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)');
+	$xml = new SimpleXMLElement(file_get_contents("http://www.self.com/feed/fitness-gear"));
+	for($i = 0; $i < 50; $i++){
+		$title = $xml->channel->item[$i]->title;
+		$link = $xml->channel->item[$i]->link;
+		$description = $xml->channel->item[$i]->description;
+		echo "<h1><a href='$link'>$title</a></h1><br><p>$description</p><br>";
+		
+	}
+		?>
+</div>
+<div class="news">
+	<?php
+	echo "<h2>Workout Playlists!</h2>";
+	ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)');
+	$xml = new SimpleXMLElement(file_get_contents("http://www.self.com/feed/playlists"));
+	for($i = 0; $i < 50; $i++){
+		$title = $xml->channel->item[$i]->title;
+		$link = $xml->channel->item[$i]->link;
+		$description = $xml->channel->item[$i]->description;
+		echo "<h1><a href='$link'>$title</a></h1><br><p>$description</p><br>";
+		
+	}
+		?>
+</div>
+</div>
+</div>
+<br><br><br><br>
 	<?php
 
 			if ( isset( $_POST['pwlost'] ) )
@@ -75,9 +149,7 @@ session_start();
 		if ( isset( $_POST['pwsubmit'] ) )
 			handle_form1( $_POST['email1']);
 	?>
-
 </fieldset>
-
 </body>
 </html>
 
