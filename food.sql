@@ -1,206 +1,101 @@
-create table food (
-	username text,
-	email text,
-	password text,
-	date text
-);
-insert into food (username, email, password, date) values ('tmedina0', 'svasquez0@reverbnation.com', 'Q0MeXm4v', '11:33 PM');
-insert into food (username, email, password, date) values ('rfisher1', 'dhawkins1@state.gov', 'gVTEPt', '2:03 PM');
-insert into food (username, email, password, date) values ('ecollins2', 'aruiz2@slashdot.org', 'ZHqDtx5Sp', '1:15 PM');
-insert into food (username, email, password, date) values ('nharris3', 'rbarnes3@mysql.com', 'PLpmotDL', '8:27 AM');
-insert into food (username, email, password, date) values ('ethomas4', 'lbradley4@washington.edu', 'GXy3Jdr1k6pH', '5:27 AM');
-insert into food (username, email, password, date) values ('bmyers5', 'thansen5@surveymonkey.com', 'iTrRDPg', '9:35 PM');
-insert into food (username, email, password, date) values ('pcarter6', 'pbryant6@diigo.com', 'mWnFGxME', '4:47 AM');
-insert into food (username, email, password, date) values ('scooper7', 'tlopez7@google.fr', 'aCvPkJ', '8:16 PM');
-insert into food (username, email, password, date) values ('wknight8', 'nlee8@ucsd.edu', 'nKRAJoR', '4:16 AM');
-insert into food (username, email, password, date) values ('ksanchez9', 'gberry9@netvibes.com', '8K65EUoa', '6:13 PM');
-insert into food (username, email, password, date) values ('jyounga', 'krodrigueza@pinterest.com', 'xBY8aGkkI6s', '11:21 AM');
-insert into food (username, email, password, date) values ('rthompsonb', 'jtaylorb@nps.gov', 'r362f3CvtiJv', '8:54 AM');
-insert into food (username, email, password, date) values ('rjonesc', 'jmcdonaldc@qq.com', 'EYaBTxfO3K', '5:34 PM');
-insert into food (username, email, password, date) values ('gwarrend', 'mfranklind@blog.com', 'bjKUq0q', '2:53 AM');
-insert into food (username, email, password, date) values ('promeroe', 'gbryante@networkadvertising.org', 'sL9Cc2', '11:59 AM');
-insert into food (username, email, password, date) values ('ageorgef', 'mthompsonf@webs.com', 'JJTofCyKhFm', '9:00 PM');
-insert into food (username, email, password, date) values ('agordong', 'sgrayg@aol.com', 'ahb3TwViz', '1:19 PM');
-insert into food (username, email, password, date) values ('pthomash', 'dwhiteh@soup.io', '79xSxA', '11:32 AM');
-insert into food (username, email, password, date) values ('abrooksi', 'mtaylori@blogtalkradio.com', 'MqNVhg6e', '11:20 AM');
-insert into food (username, email, password, date) values ('lweaverj', 'drogersj@yahoo.co.jp', 'EvtRR0UaPw', '11:45 AM');
-insert into food (username, email, password, date) values ('griverak', 'gfordk@cnbc.com', 'kRDGfJ8aXe43', '12:05 PM');
-insert into food (username, email, password, date) values ('lvasquezl', 'jgordonl@scientificamerican.com', 'fVaTdEc', '2:22 AM');
-insert into food (username, email, password, date) values ('jwilsonm', 'fbennettm@slate.com', 'htKjZzspq', '8:31 AM');
-insert into food (username, email, password, date) values ('sevansn', 'jholmesn@delicious.com', 'FkTBE6D', '4:08 PM');
-insert into food (username, email, password, date) values ('abaileyo', 'jmasono@wunderground.com', 'ymCfrSBptI', '7:12 AM');
-insert into food (username, email, password, date) values ('jholmesp', 'tlittlep@php.net', '0SogeS3G', '7:34 AM');
-insert into food (username, email, password, date) values ('pmcdonaldq', 'shughesq@feedburner.com', '0QkW5s', '10:25 PM');
-insert into food (username, email, password, date) values ('bmarshallr', 'bcollinsr@archive.org', '95pzCmO', '7:19 AM');
-insert into food (username, email, password, date) values ('jpowells', 'lrobertss@hud.gov', '6Bgx64oS', '9:34 PM');
-insert into food (username, email, password, date) values ('ameyert', 'rjenkinst@canalblog.com', 'IVOQ2G', '9:53 AM');
-insert into food (username, email, password, date) values ('bscottu', 'jrayu@wsj.com', 'O4EIg8M', '8:25 PM');
-insert into food (username, email, password, date) values ('jhansenv', 'cdunnv@apache.org', 'Rqrg7u', '3:26 AM');
-insert into food (username, email, password, date) values ('rcunninghamw', 'kcookw@prnewswire.com', 'QDSAVdA8HauJ', '7:30 AM');
-insert into food (username, email, password, date) values ('bdeanx', 'jstanleyx@telegraph.co.uk', 'tGkJZ0tr', '7:38 AM');
-insert into food (username, email, password, date) values ('maustiny', 'portizy@digg.com', 'pkIMgx9z', '1:29 AM');
-insert into food (username, email, password, date) values ('erossz', 'mcoxz@ebay.com', '05HRR7XbGu', '6:39 PM');
-insert into food (username, email, password, date) values ('myoung10', 'jedwards10@homestead.com', 'eJyoG8ua1RH', '1:03 AM');
-insert into food (username, email, password, date) values ('ehill11', 'tray11@bloglines.com', 'A9ykAxNkf6', '7:20 AM');
-insert into food (username, email, password, date) values ('jwells12', 'dwright12@webs.com', 'Iz7vY0o5', '3:25 PM');
-insert into food (username, email, password, date) values ('amoreno13', 'dgarza13@nsw.gov.au', 'Bpb2sG', '12:05 PM');
-insert into food (username, email, password, date) values ('jcox14', 'awatson14@webeden.co.uk', 'bOrxFV', '5:40 PM');
-insert into food (username, email, password, date) values ('pnichols15', 'krussell15@netlog.com', 'pdAeNszZKWIC', '11:28 PM');
-insert into food (username, email, password, date) values ('eclark16', 'lmedina16@drupal.org', 'kMGnBArXd8K', '11:32 PM');
-insert into food (username, email, password, date) values ('rsmith17', 'rperez17@fda.gov', 'O0t4jADHiK', '3:17 PM');
-insert into food (username, email, password, date) values ('jsimpson18', 'pkim18@ovh.net', 'D2MHnJBaYN', '4:02 PM');
-insert into food (username, email, password, date) values ('agutierrez19', 'jjenkins19@ezinearticles.com', 'tEeQJjh', '12:14 AM');
-insert into food (username, email, password, date) values ('gcarroll1a', 'nmontgomery1a@techcrunch.com', 'p6hhv0Kmaz', '8:01 PM');
-insert into food (username, email, password, date) values ('jrogers1b', 'bcoleman1b@blogtalkradio.com', '9kVZ5tvNBTp', '6:49 AM');
-insert into food (username, email, password, date) values ('kpowell1c', 'jadams1c@imageshack.us', '6LFPEwqvq', '5:34 PM');
-insert into food (username, email, password, date) values ('rmartinez1d', 'lmontgomery1d@hao123.com', 'JCGbCqkHfnM', '6:47 AM');
-insert into food (username, email, password, date) values ('hrose1e', 'sparker1e@miitbeian.gov.cn', 'sVFniWs', '12:03 PM');
-insert into food (username, email, password, date) values ('hbishop1f', 'rsmith1f@nature.com', '4g0jS4W5p5t', '6:31 AM');
-insert into food (username, email, password, date) values ('vhall1g', 'hgibson1g@microsoft.com', 'BelokB5ROG', '6:32 AM');
-insert into food (username, email, password, date) values ('saustin1h', 'lrobertson1h@fc2.com', '7Puft88aD', '7:09 AM');
-insert into food (username, email, password, date) values ('scarroll1i', 'ataylor1i@chicagotribune.com', '27f2hT', '6:23 AM');
-insert into food (username, email, password, date) values ('fgray1j', 'vbradley1j@ask.com', 't1ly7rCIo8', '12:07 PM');
-insert into food (username, email, password, date) values ('ljenkins1k', 'gfields1k@wordpress.org', '2QiqOiys3s', '4:11 PM');
-insert into food (username, email, password, date) values ('ecastillo1l', 'htorres1l@surveymonkey.com', '8MUrqO8GN3K', '7:50 PM');
-insert into food (username, email, password, date) values ('bruiz1m', 'skennedy1m@miibeian.gov.cn', 'UD9RzvFkvZQ', '10:24 PM');
-insert into food (username, email, password, date) values ('shicks1n', 'lboyd1n@sina.com.cn', 'hRW3QV', '4:00 AM');
-insert into food (username, email, password, date) values ('cscott1o', 'lhunt1o@usa.gov', 'tRv5E9uy', '1:16 AM');
-insert into food (username, email, password, date) values ('jbryant1p', 'rromero1p@amazon.co.jp', 'kq2394A1WU6', '11:17 PM');
-insert into food (username, email, password, date) values ('along1q', 'mmills1q@go.com', 'MjDyack42', '12:22 AM');
-insert into food (username, email, password, date) values ('jharrison1r', 'dfernandez1r@histats.com', '9bbqNO', '12:14 PM');
-insert into food (username, email, password, date) values ('jarmstrong1s', 'efranklin1s@dedecms.com', 'yrIJqobMzJsJ', '4:29 PM');
-insert into food (username, email, password, date) values ('bstevens1t', 'cgriffin1t@marketwatch.com', 'bBqbjMAM6UGK', '12:23 AM');
-insert into food (username, email, password, date) values ('cdaniels1u', 'kparker1u@blogger.com', 'Vl07igX', '2:43 PM');
-insert into food (username, email, password, date) values ('jnelson1v', 'loliver1v@uol.com.br', 'a55JFhvVRr', '11:44 AM');
-insert into food (username, email, password, date) values ('slee1w', 'kcarpenter1w@tumblr.com', 'EJlugW1jyImb', '10:46 PM');
-insert into food (username, email, password, date) values ('jvasquez1x', 'ghunter1x@cargocollective.com', 'HNxqUpdUz3W', '7:36 PM');
-insert into food (username, email, password, date) values ('mjones1y', 'bmorales1y@cargocollective.com', 'Nk1NiKjQS7h', '9:08 AM');
-insert into food (username, email, password, date) values ('kblack1z', 'pmorgan1z@surveymonkey.com', 'v7WZo8NYlkU', '1:55 PM');
-insert into food (username, email, password, date) values ('dbishop20', 'nstone20@walmart.com', 'RBGSuHvF', '4:39 PM');
-insert into food (username, email, password, date) values ('ljordan21', 'crodriguez21@wikispaces.com', 'VgDI6gdG', '4:40 AM');
-insert into food (username, email, password, date) values ('cruiz22', 'swarren22@mapquest.com', 'WB6THOrRcI4', '10:18 PM');
-insert into food (username, email, password, date) values ('jcox23', 'jwatson23@abc.net.au', 'nkmD93VTX', '9:04 AM');
-insert into food (username, email, password, date) values ('dhowell24', 'vwood24@vistaprint.com', 'Fvl0oN', '5:30 PM');
-insert into food (username, email, password, date) values ('hdavis25', 'pfreeman25@sphinn.com', 'T52bNP6uQQ', '10:31 AM');
-insert into food (username, email, password, date) values ('djenkins26', 'shunter26@de.vu', 'N4EPsoWrw', '5:30 AM');
-insert into food (username, email, password, date) values ('rbowman27', 'tgibson27@huffingtonpost.com', 'yjSBJCHHLa', '11:16 AM');
-insert into food (username, email, password, date) values ('dlane28', 'tmorgan28@youtube.com', 'vgkASau', '6:42 AM');
-insert into food (username, email, password, date) values ('jking29', 'dhayes29@photobucket.com', 'mTBsSX', '10:18 AM');
-insert into food (username, email, password, date) values ('nreid2a', 'ljohnston2a@stumbleupon.com', 'Hh2ofI2o', '10:02 PM');
-insert into food (username, email, password, date) values ('dreid2b', 'kmartinez2b@barnesandnoble.com', 'iO7nC6MQUY', '11:30 AM');
-insert into food (username, email, password, date) values ('cmorris2c', 'vtaylor2c@shareasale.com', 'b4Al6pr', '2:43 PM');
-insert into food (username, email, password, date) values ('afernandez2d', 'wcox2d@vk.com', 'JqPOBBU', '6:02 PM');
-insert into food (username, email, password, date) values ('prichardson2e', 'glong2e@blogger.com', '14Uecn', '12:25 AM');
-insert into food (username, email, password, date) values ('kduncan2f', 'afernandez2f@friendfeed.com', 'W1e71JiId', '2:30 PM');
-insert into food (username, email, password, date) values ('acastillo2g', 'sbryant2g@java.com', 'YTAdaL1RkY', '8:23 AM');
-insert into food (username, email, password, date) values ('hbarnes2h', 'ayoung2h@tinyurl.com', 'R0qeMjcIC', '8:11 PM');
-insert into food (username, email, password, date) values ('rphillips2i', 'dgreen2i@lycos.com', 'BXvfPCZF9eqk', '9:46 AM');
-insert into food (username, email, password, date) values ('lreynolds2j', 'jgilbert2j@hubpages.com', 'HpGEEHgFLEe', '5:04 AM');
-insert into food (username, email, password, date) values ('cwheeler2k', 'shanson2k@freewebs.com', 'eBYEe5u', '1:04 PM');
-insert into food (username, email, password, date) values ('bfreeman2l', 'gblack2l@sourceforge.net', 'bBhr6jrQJX', '6:32 PM');
-insert into food (username, email, password, date) values ('jelliott2m', 'mrobertson2m@cafepress.com', '0Wd4fQNi', '10:24 PM');
-insert into food (username, email, password, date) values ('ecooper2n', 'jrose2n@rakuten.co.jp', 'okClc5f', '6:05 PM');
-insert into food (username, email, password, date) values ('bholmes2o', 'emorgan2o@networksolutions.com', 'sRzOiSdVN', '9:14 AM');
-insert into food (username, email, password, date) values ('sscott2p', 'kshaw2p@technorati.com', 'b6UvtYVNY9', '8:28 AM');
-insert into food (username, email, password, date) values ('arussell2q', 'nporter2q@merriam-webster.com', '0SzD9koC', '3:11 PM');
-insert into food (username, email, password, date) values ('rdixon2r', 'jallen2r@amazonaws.com', '8JbXmpS0r', '5:30 AM');
-insert into food (username, email, password, date) values ('mpierce2s', 'kmoore2s@about.me', 'HNJA5J6G', '11:54 PM');
-insert into food (username, email, password, date) values ('pfox2t', 'jmeyer2t@berkeley.edu', 'S2L8zFJ', '8:38 PM');
-insert into food (username, email, password, date) values ('tscott2u', 'cpayne2u@sfgate.com', 'FDcQhHfVvGD', '1:02 PM');
-insert into food (username, email, password, date) values ('aortiz2v', 'dfreeman2v@hhs.gov', 'ay4lkYP', '2:31 PM');
-insert into food (username, email, password, date) values ('eclark2w', 'jparker2w@51.la', 'cam84RaNr', '5:39 AM');
-insert into food (username, email, password, date) values ('mmoreno2x', 'bnguyen2x@behance.net', 'yHJyFah', '1:31 PM');
-insert into food (username, email, password, date) values ('jharper2y', 'mfowler2y@devhub.com', 'z2LmgXfsulE', '5:25 AM');
-insert into food (username, email, password, date) values ('hjenkins2z', 'jcoleman2z@nbcnews.com', 'fgQZVPD', '7:40 AM');
-insert into food (username, email, password, date) values ('bfernandez30', 'jcastillo30@jiathis.com', 'CmfApa', '8:40 PM');
-insert into food (username, email, password, date) values ('jsimpson31', 'skelly31@yellowpages.com', '2iXPYWc09', '4:43 AM');
-insert into food (username, email, password, date) values ('sstone32', 'sjackson32@issuu.com', 'GNledb', '7:07 AM');
-insert into food (username, email, password, date) values ('rgarcia33', 'grice33@ucoz.com', 'iyMXd6YAT', '2:56 AM');
-insert into food (username, email, password, date) values ('jallen34', 'pmccoy34@eepurl.com', 'yb68GFkU', '4:19 AM');
-insert into food (username, email, password, date) values ('nbarnes35', 'jtorres35@furl.net', 'CgmaBu', '5:50 AM');
-insert into food (username, email, password, date) values ('rwest36', 'jwillis36@china.com.cn', 'Yo8sgGc8Yx', '8:07 AM');
-insert into food (username, email, password, date) values ('ehanson37', 'pjackson37@biblegateway.com', 'Uls48HO833', '4:10 AM');
-insert into food (username, email, password, date) values ('dwest38', 'jphillips38@myspace.com', 'm75udEbn', '5:25 AM');
-insert into food (username, email, password, date) values ('akim39', 'gwilson39@nature.com', '0c97XdGEXT4N', '5:44 AM');
-insert into food (username, email, password, date) values ('nhill3a', 'smedina3a@time.com', 'TOhXjcS', '4:03 AM');
-insert into food (username, email, password, date) values ('abarnes3b', 'jandrews3b@t.co', 'aQZKFH4KBnXa', '5:32 AM');
-insert into food (username, email, password, date) values ('krogers3c', 'bperkins3c@psu.edu', 'MhF0q5zkns', '9:45 AM');
-insert into food (username, email, password, date) values ('mjohnson3d', 'mortiz3d@dailymotion.com', 'ULiMWpM8', '7:23 PM');
-insert into food (username, email, password, date) values ('abowman3e', 'levans3e@guardian.co.uk', '5JGnlDOwLw', '1:54 AM');
-insert into food (username, email, password, date) values ('sedwards3f', 'rwillis3f@bbb.org', 'USK3v9e7', '7:58 PM');
-insert into food (username, email, password, date) values ('wstevens3g', 'kjacobs3g@ifeng.com', 'q3r1fbGB', '2:35 PM');
-insert into food (username, email, password, date) values ('rfowler3h', 'lgonzales3h@census.gov', '2NBYIt3', '5:20 AM');
-insert into food (username, email, password, date) values ('dsmith3i', 'cmitchell3i@nymag.com', '3wGlNJ', '10:11 PM');
-insert into food (username, email, password, date) values ('pmyers3j', 'rwilson3j@cloudflare.com', 'Kh9nH7', '12:33 AM');
-insert into food (username, email, password, date) values ('sanderson3k', 'spalmer3k@apple.com', 'jWZTyz', '2:07 PM');
-insert into food (username, email, password, date) values ('cgrant3l', 'jhughes3l@people.com.cn', 'FD4uiB', '3:20 AM');
-insert into food (username, email, password, date) values ('jdavis3m', 'bcunningham3m@cbslocal.com', 'DPNlpipqN', '2:07 PM');
-insert into food (username, email, password, date) values ('ekim3n', 'tfox3n@seattletimes.com', 'lWyzrNTAWRl', '10:44 PM');
-insert into food (username, email, password, date) values ('amason3o', 'rkim3o@princeton.edu', '4NjPf4B', '4:35 AM');
-insert into food (username, email, password, date) values ('aandrews3p', 'jdean3p@marketwatch.com', '0LlCa8HF', '12:04 AM');
-insert into food (username, email, password, date) values ('nhicks3q', 'pgardner3q@edublogs.org', 'O5PkmZR18', '4:23 AM');
-insert into food (username, email, password, date) values ('jross3r', 'nbell3r@msu.edu', '6bCHhI1kEh', '3:14 PM');
-insert into food (username, email, password, date) values ('mwelch3s', 'rlane3s@bing.com', 'qyZFQg', '11:44 PM');
-insert into food (username, email, password, date) values ('rphillips3t', 'kgomez3t@hp.com', '9zBseLao', '1:13 AM');
-insert into food (username, email, password, date) values ('drichards3u', 'jrichards3u@nih.gov', 'HwV05eUP', '5:23 AM');
-insert into food (username, email, password, date) values ('aford3v', 'jgreen3v@elegantthemes.com', 'yGOOuL', '6:24 PM');
-insert into food (username, email, password, date) values ('jturner3w', 'mholmes3w@cargocollective.com', 'p3uKgPXLW', '1:40 PM');
-insert into food (username, email, password, date) values ('klynch3x', 'lkennedy3x@yellowpages.com', '5Clplo', '6:26 AM');
-insert into food (username, email, password, date) values ('evasquez3y', 'jlynch3y@dagondesign.com', 'rojScHg4e', '11:49 AM');
-insert into food (username, email, password, date) values ('bbarnes3z', 'amoreno3z@yelp.com', 'IuJdkE8jd7u', '10:25 PM');
-insert into food (username, email, password, date) values ('hallen40', 'eelliott40@wikimedia.org', 'punALJgb', '5:58 AM');
-insert into food (username, email, password, date) values ('bhill41', 'raustin41@friendfeed.com', '9TdQTD', '11:25 PM');
-insert into food (username, email, password, date) values ('tcarroll42', 'djacobs42@dailymotion.com', 'gIPg1b1OAE', '9:01 AM');
-insert into food (username, email, password, date) values ('jwatson43', 'mpatterson43@jalbum.net', 'w7fFG8nQeMB', '3:40 PM');
-insert into food (username, email, password, date) values ('npatterson44', 'mvasquez44@auda.org.au', 'tfL0SAIA5nJ', '7:31 PM');
-insert into food (username, email, password, date) values ('nmiller45', 'bcunningham45@wired.com', 'KBThgoxD', '8:11 PM');
-insert into food (username, email, password, date) values ('klarson46', 'gramirez46@earthlink.net', 'AloYCId9cj', '5:06 PM');
-insert into food (username, email, password, date) values ('jmorgan47', 'egibson47@google.co.jp', 'UIkcoaV', '5:19 PM');
-insert into food (username, email, password, date) values ('alane48', 'fpatterson48@ca.gov', 'quAbQ6sf', '4:15 AM');
-insert into food (username, email, password, date) values ('ccox49', 'sallen49@about.com', '3HNsYEEX', '12:47 PM');
-insert into food (username, email, password, date) values ('cfields4a', 'jwilson4a@census.gov', 'e62jCr8fl', '5:00 PM');
-insert into food (username, email, password, date) values ('ewatkins4b', 'lnguyen4b@ning.com', 'Etj8Zh89I', '7:22 AM');
-insert into food (username, email, password, date) values ('ahenderson4c', 'krussell4c@github.io', 'uhNCyDli', '5:38 AM');
-insert into food (username, email, password, date) values ('sromero4d', 'jramos4d@cargocollective.com', 'guhxvOYsV', '4:13 PM');
-insert into food (username, email, password, date) values ('whenry4e', 'ehunter4e@blogspot.com', '0HoczL11XOcd', '4:41 PM');
-insert into food (username, email, password, date) values ('ahawkins4f', 'hwillis4f@ucla.edu', 'fTEWey5', '5:03 AM');
-insert into food (username, email, password, date) values ('vcruz4g', 'aramos4g@dailymotion.com', 'KviJDCQGjkTi', '4:12 AM');
-insert into food (username, email, password, date) values ('jbishop4h', 'amatthews4h@friendfeed.com', 'Tect2v5N', '1:06 PM');
-insert into food (username, email, password, date) values ('ahowell4i', 'abrown4i@nhs.uk', 'gGvPrPb22LKS', '1:46 PM');
-insert into food (username, email, password, date) values ('salvarez4j', 'pbanks4j@unblog.fr', 'nUlafFQ1nsy', '3:32 PM');
-insert into food (username, email, password, date) values ('lcook4k', 'cchapman4k@istockphoto.com', 'prggre', '12:01 PM');
-insert into food (username, email, password, date) values ('pbaker4l', 'emyers4l@google.co.uk', 'qPVaXOL', '8:05 PM');
-insert into food (username, email, password, date) values ('aray4m', 'mhunt4m@amazonaws.com', 'FjQvWKQDt', '8:09 AM');
-insert into food (username, email, password, date) values ('dwatkins4n', 'lperry4n@jigsy.com', '1PoEnB', '2:38 AM');
-insert into food (username, email, password, date) values ('rcarr4o', 'mray4o@posterous.com', 'kww4anpGx', '1:42 PM');
-insert into food (username, email, password, date) values ('kcooper4p', 'jwillis4p@umn.edu', 'zD42m4yY', '9:09 AM');
-insert into food (username, email, password, date) values ('egordon4q', 'mbishop4q@utexas.edu', 'KHFW3W', '11:36 PM');
-insert into food (username, email, password, date) values ('lwhite4r', 'alewis4r@paypal.com', 'KXdZdmW', '6:46 AM');
-insert into food (username, email, password, date) values ('mhawkins4s', 'tburton4s@chronoengine.com', 'Os7lokLHO', '9:06 PM');
-insert into food (username, email, password, date) values ('cflores4t', 'rgonzalez4t@arizona.edu', '7Nx43GyAuTF', '10:15 AM');
-insert into food (username, email, password, date) values ('cmoore4u', 'awebb4u@histats.com', 'Qg4jGfnIP', '8:22 PM');
-insert into food (username, email, password, date) values ('chicks4v', 'cmorales4v@weather.com', 'BBKyoLmjKEOI', '4:13 AM');
-insert into food (username, email, password, date) values ('dhamilton4w', 'rgomez4w@hhs.gov', 'yQD8KkV8', '12:47 AM');
-insert into food (username, email, password, date) values ('promero4x', 'aberry4x@mediafire.com', 'eKJSMCiK', '2:12 AM');
-insert into food (username, email, password, date) values ('jhanson4y', 'wmyers4y@elpais.com', 'D4DNyKBYt', '5:11 PM');
-insert into food (username, email, password, date) values ('eward4z', 'carmstrong4z@latimes.com', 'NadmYqg8U', '9:35 AM');
-insert into food (username, email, password, date) values ('rthomas50', 'tmills50@google.it', 'BrcfFkXxQ6', '10:39 PM');
-insert into food (username, email, password, date) values ('hperez51', 'wwalker51@oracle.com', 'rdgPvNVrBNOW', '7:24 PM');
-insert into food (username, email, password, date) values ('chunt52', 'anguyen52@mozilla.com', 'ecWGAZgM5TTV', '12:13 PM');
-insert into food (username, email, password, date) values ('jmills53', 'rfrazier53@theatlantic.com', 'cuwak5Lw', '3:09 AM');
-insert into food (username, email, password, date) values ('jmason54', 'hlawson54@reference.com', '2NEPRwEZPtA', '2:54 PM');
-insert into food (username, email, password, date) values ('kpeterson55', 'rbell55@blogtalkradio.com', 'BiSeAA0JXibR', '2:24 AM');
-insert into food (username, email, password, date) values ('mwarren56', 'awheeler56@t-online.de', '7yyxO61AnmbK', '9:33 AM');
-insert into food (username, email, password, date) values ('pphillips57', 'lwebb57@dagondesign.com', 'pys5JPQUe', '6:08 PM');
-insert into food (username, email, password, date) values ('mramirez58', 'aferguson58@netvibes.com', 'pW7IAKvnyKU', '3:42 PM');
-insert into food (username, email, password, date) values ('mbowman59', 'tmills59@networksolutions.com', 'SUaZMVm1', '4:32 AM');
-insert into food (username, email, password, date) values ('jmiller5a', 'salexander5a@t-online.de', 'kn5fB4W628', '5:43 AM');
-insert into food (username, email, password, date) values ('ewells5b', 'ptorres5b@dedecms.com', 'FPQMYreAX5H', '12:31 AM');
-insert into food (username, email, password, date) values ('pbishop5c', 'bgonzales5c@istockphoto.com', 'w5n5wYo', '3:16 AM');
-insert into food (username, email, password, date) values ('ewoods5d', 'dday5d@flickr.com', 'Z7HOHGWUwqS', '1:01 PM');
-insert into food (username, email, password, date) values ('jalexander5e', 'rdavis5e@google.com.br', 'HHssElaxh1', '7:56 AM');
-insert into food (username, email, password, date) values ('spierce5f', 'kmason5f@china.com.cn', 'RC6Mwo', '7:52 AM');
-insert into food (username, email, password, date) values ('dlynch5g', 'sbanks5g@yelp.com', 'B5fZYfx4', '2:01 AM');
-insert into food (username, email, password, date) values ('ladams5h', 'ablack5h@vistaprint.com', 'izAjyA', '11:28 AM');
-insert into food (username, email, password, date) values ('jmoore5i', 'rfowler5i@exblog.jp', 'ap2XuYy4Zph3', '6:32 AM');
-insert into food (username, email, password, date) values ('hmurphy5j', 'lbrooks5j@indiegogo.com', 'BVn5UELa0wnL', '5:22 AM');
+
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('Buffalo Chicken Soup', '314', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('Gardenburger Value Meal', '640', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('Grilled Cheese & Soup Value Meal', '703', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('Grilled Chicken Sandwich Value Meal', '683', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('Pizza Value Meal', '942', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('Soup and 1/2 Sandwich Value Meal', '626', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('Vegetarian Entree Value Meal', '387', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('Beef Chilip', '361', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('Chicken Noodle Soup', '114', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('Quinoa & Sweet Potato Chili', '267', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('Roasted Vegetable Soup', '210', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('Cold Wraps', '550', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('', '', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('', '', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('', '', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('', '', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('', '', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('', '', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('', '', 'Lunch');
+INSERT INTO `hwangmn`.`food` (`Food`, `Calories`, `Type`) VALUES ('', '', 'Lunch');
+
+
+
+
+
+
+
+
+
+
+
+Blueberry & Cream Cheese Croissant	2275	Bakery
+Belgian Waffle	442	Breakfast
+Eggs cooked your way	103	Breakfast
+Pancakes	290	Breakfast
+Sausage Pattys	213	Breakfast
+Bagel Sandwich	608	Breakfast
+Egg McBc	551	Breakfast
+Pancake Value	1001	Breakfast
+Hot Oatmeal 10 oz	179	Breakfast
+Bacon	393	Breakfast
+Crispy Breakfast Potatoes	220	Breakfast
+Hard Boiled Egg	72	Breakfast
+Sausage Egg & Cheese Biscuit	618	Breakfast
+Steak & Egg Sub	510	Breakfast
+Omelet	396	Breakfast
+Baby Arugula Parmesan Salad	641	Grab and Go
+Cheese Tray	558	Grab and Go
+Chicken Pesto Pasta Salad	618	Grab and Go
+Chickpea Avacado on Grilled Flat Bread	500	Grab and Go
+Chipotle Roast Beef Wrap	916	Grab and Go
+BC Chocolate Chip Cookie (Dozen)	2258	Bakery
+Fluffer Club With Nutella	573	Grab and Go
+G.F. Whole Grain Peanut Butter& Jelly	385	Grab and Go
+Gluten Free Whole Grain Turkey Sandwich	599	Grab and Go
+Italian Sub	681	Grab and Go
+Seared Balsamic Chicken Salad	410	Grab and Go
+Tomato Mozzarella Sandwich	630	Grab and Go
+Turkey Sandwich on Multigrain	574	Grab and Go
+Caramel Heath Crunch Cake	6674	Bakery
+Carrot Cupcake w/ Cream Cheese Icing (Dozen)	8897	Bakery
+Cho Drizzle Coconut Cookie	2950	Bakery
+Choc Image Cake	6457	Bakery
+Chocolate Croissant	360	Bakery
+Coffee Roll	621	Bakery
+Molasses Cookies (Dozen)	2847	Bakery
+Oatmeal Craisin Cookie (Dozen)	3643	Bakery
+Plain Croissants	284	Bakery
+BC Burger Value Meal	813	Lunch
+Gardenburger Value Meal
+640	Lunch
+Grilled Cheese & Soup Value Meal	703	Lunch
+Grilled Chicken Sandwich Value Meal	683	Lunch
+GPizza Value Meal	942	Lunch
+Soup and 1/2 Sandwich Value Meal	626	Lunch
+Vegetarian Entree Value Meal	387	Lunch
+Beef Chili	361	Lunch
+Chicken Noodle Soup	114	Lunch
+Quinoa & Sweet Potato Chili	267	Lunch
+Roasted Vegetable Soup	210	Lunch
+Cold Wraps	550	Lunch
+Deli Sandwich	357	Lunch
+Large Cold Subs	1085	Lunch
+Regular Cold Sub	519	Lunch
+Chicken Philly Cheese Steak Quesadilla	1257	Lunch
+Grilled Vegetable Quesadilla	1589	Lunch
+Philly Cheese Steak Quesadilla	1093	Lunch
+Noodle Bar	603	Lunch
+Cheese Pizza	447	Lunch
+Meatball Pizza	460	Lunch
+Pepperoni Pizza	495	Lunch
+Whole Wheat Three Cheese Broccoli Pizza	338	Lunch
+BC Burger with Toppings	603	Lunch
+Garden Burger
+431	Lunch
+Grilled Chicken Sandwich	473	Lunch
+Grilled Portabella Sandwich	412	Lunch
+Sirloin Steak Sandwich	431	Lunch
+Select an option	0	Grab and Go
+Select an option	0	Bakery
