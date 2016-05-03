@@ -1,7 +1,7 @@
-function calculate(a, b, c, d, e, newone) {
+function calculate(a, b, c, d, e, f, g, newone) {
 	if (newone != "Select an exercise"){
 		var total;
-		total = a + b + c + d + e;
+		total = a + b + c + d + e + f + g;
 		if (newone == "Run") {
 			run(total);
 		}

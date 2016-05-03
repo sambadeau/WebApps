@@ -10,6 +10,8 @@ function displayForm() {
 	$find3 = "SELECT * FROM food WHERE Type = \"Dinner\"";
 	$find4 = "SELECT * FROM food WHERE Type = \"Dessert\"";
 	$find5 = "SELECT * FROM food WHERE Type = \"Drink\"";
+	$find6 = "SELECT * FROM food WHERE Type = \"Grab and Go\"";
+	$find7 = "SELECT * FROM food WHERE Type = \"Bakery\"";
 	echo "<p>Breakfast options</p>";
 	echo '<select name="foodchoice1">';
 		echo '<option value="Select an option">Select an option</option>';
@@ -75,6 +77,32 @@ function displayForm() {
 			}
 	}
 	echo "</select>";
+	echo "<p>Grab and Go options</p>";
+	echo '<select name="foodchoice6">';
+		echo '<option value="Select an option">Select an option</option>';
+	if ($r = perform_query($dbnow, $find6)) {
+			while ($row = mysqli_fetch_assoc($r)) {
+				if ($row["Food"] != "Select an option"){
+					$name = $row["Food"];
+					$c = $row["Calories"];
+					echo "<option value=\"".$name."\">".$name."</option>";
+				}
+			}
+	}
+	echo "</select>";
+	echo "<p>Bakery options</p>";
+	echo '<select name="foodchoice7">';
+		echo '<option value="Select an option">Select an option</option>';
+	if ($r = perform_query($dbnow, $find7)) {
+			while ($row = mysqli_fetch_assoc($r)) {
+				if ($row["Food"] != "Select an option"){
+					$name = $row["Food"];
+					$c = $row["Calories"];
+					echo "<option value=\"".$name."\">".$name."</option>";
+				}
+			}
+	}
+	echo "</select>";
 	echo "<p>Exercise options</p>";
 	echo '<select name="Exercise">
 			<option value="Select an exercise">Select an exercise</option>
@@ -116,7 +144,7 @@ function displayForm() {
 		$find = "SELECT * FROM fooduser";
 		$history = "SELECT * FROM food";
 		if(isset($_GET["go"])){
-			phpcalc($_GET["foodchoice1"], $_GET["foodchoice2"], $_GET["foodchoice3"], $_GET["foodchoice4"], $_GET["foodchoice5"], $dbnow, $history, $_GET["Exercise"]);
+			phpcalc($_GET["foodchoice1"], $_GET["foodchoice2"], $_GET["foodchoice3"], $_GET["foodchoice4"], $_GET["foodchoice5"], $_GET["foodchoice6"], $_GET["foodchoice7"], $dbnow, $history, $_GET["Exercise"]);
 		}
 		?>
 		</div>
@@ -136,7 +164,7 @@ function displayForm() {
 		$always = "SELECT * FROM fooduser ORDER BY InputTime ASC";
 		$dbnow = connect_to_db( "hwangmn" );
 
-		function phpcalc($a, $b, $c, $d, $e, $dbnow, $history, $exer){
+		function phpcalc($a, $b, $c, $d, $e, $f, $g, $dbnow, $history, $exer){
 			echo "
 			<fieldset>
 				<p id=\"result\"></p>
@@ -146,22 +174,29 @@ function displayForm() {
 			    	if ($a == $row["Food"]) {
 			    		$a = $row["Calories"];
 			    	}
-			    	elseif ($b == $row["Food"]) {
+			    	if ($b == $row["Food"]) {
 						$b = $row["Calories"];
 			    	}
-			    	elseif ($c == $row["Food"]) {
+			    	if  ($c == $row["Food"]) {
 						$c = $row["Calories"];
 			    	}
-			    	elseif ($d == $row["Food"]) {
+			    	if  ($d == $row["Food"]) {
 						$d = $row["Calories"];
 			    	}
-			    	elseif ($e == $row["Food"]) {
+			    	if  ($e == $row["Food"]) {
 						$e = $row["Calories"];
+			    	}
+			    	if  ($f == $row["Food"]) {
+						$f = $row["Calories"];
+			    	}
+			    	if  ($g == $row["Food"]) {
+						$g = $row["Calories"];
 			    	}
 			    }
 			}
+
 		echo "<script type=\"text/javascript\">
-					calculate(".$a.",".$b.",".$c.",".$d.",".$e.",\"".$exer."\");
+					calculate(".$a.",".$b.",".$c.",".$d.",".$e.",".$f.", ".$g.",\"".$exer."\");
 				  </script>";
 		}
 
@@ -200,7 +235,7 @@ function displayForm() {
 			}
 		}
 		if (isset($_GET["go"])){
-			$getgoing = $find = "SELECT * FROM food";
+			$getgoing = "SELECT * FROM food";
 			//INSERT INTO `fooduser` VALUES ("wudh@bc.edu", "Big Mac", now());
 			$one = $_SESSION["user"];
 			$two = $_GET["foodchoice1"];
@@ -208,6 +243,8 @@ function displayForm() {
 			$four = $_GET["foodchoice3"];
 			$five = $_GET["foodchoice4"];
 			$six = $_GET["foodchoice5"];
+			$seven = $_GET["foodchoice6"];
+			$eight = $_GET["foodchoice7"];
 			if (isset($_GET["foodchoice1"])) {
 				if ($_GET["foodchoice1"] != "Select an option"){
 					if ($r = perform_query($dbnow, $getgoing)) {
@@ -276,6 +313,36 @@ function displayForm() {
 					}
 					$comm5 = "INSERT INTO fooduser VALUES (\"$one\",\"$six\", now(), \"$t5\", \"$c5\");";
 					perform_query($dbnow, $comm5);
+				}
+			}
+			if (isset($_GET["foodchoice6"])) {
+				if ($_GET["foodchoice6"] != "Select an option"){
+					if ($r = perform_query($dbnow, $getgoing)) {
+							while ($row = mysqli_fetch_assoc($r)) {
+								if ($row["Food"] == $seven){
+									$t6 = $row["Type"];
+									$c6 = $row["Calories"];
+								}
+							}
+					}
+					echo $t6;
+					$comm6 = "INSERT INTO fooduser VALUES (\"$one\",\"$seven\", now(), \"$t6\", \"$c6\");";
+					perform_query($dbnow, $comm6);
+				}
+			}
+			if (isset($_GET["foodchoice7"])) {
+				if ($_GET["foodchoice7"] != "Select an option"){
+					if ($r = perform_query($dbnow, $getgoing)) {
+							while ($row = mysqli_fetch_assoc($r)) {
+								if ($row["Food"] == $eight){
+									$t7 = $row["Type"];
+									$c7 = $row["Calories"];
+								}
+							}
+					}
+					echo $t7;
+					$comm7 = "INSERT INTO fooduser VALUES (\"$one\",\"$eight\", now(), \"$t7\", \"$c7\");";
+					perform_query($dbnow, $comm7);
 				}
 			}
 		}
