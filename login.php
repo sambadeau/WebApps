@@ -17,7 +17,30 @@ session_start();
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
+	<style type="text/css">
+	#container{width:100%;}
+	.news {
+	    overflow: auto;
+	    height: 300px;
+	    border: 3px groove blue;
+	    width: 33.333333%;
+	    float:left;
+	}
+		.news2 {
+		    overflow: auto;
+		    height: 300px;
+		    border: 3px groove red;
+		    width: 33.333333%;
+		    float:left;
+	}
+		.news3 {
+		    overflow: auto;
+		    height: 300px;
+		    border: 3px groove green;
+		    width: 33.333333%;
+		    float:left;
+	}
+	</style>
 </head>
 <body>
 
@@ -77,7 +100,54 @@ session_start();
 	?>
 
 </fieldset>
+<br><br><br><br>
+<div id="container">
+<div class="news">
+	<?php
+	echo "<h2>Yahoo Fitness RSS Feed</h2>";
+	ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)');
+	$xml = new SimpleXMLElement(file_get_contents("http://www.self.com/feed/fitness"));
+	for($i = 0; $i < 50; $i++){
+		$title = $xml->channel->item[$i]->title;
+		$link = $xml->channel->item[$i]->link;
+		$description = $xml->channel->item[$i]->description;
+		echo "<h1><a href='$link'>$title</a></h1><br><p>$description</p><br>";
 
+	}
+		?>
+</div>
+
+<div class="news2">
+	<?php
+	echo "<h2>Fitness Gear RSS Feed</h2>";
+	ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)');
+	$xml = new SimpleXMLElement(file_get_contents("http://www.self.com/feed/fitness-gear"));
+	for($i = 0; $i < 50; $i++){
+		$title = $xml->channel->item[$i]->title;
+		$link = $xml->channel->item[$i]->link;
+		$description = $xml->channel->item[$i]->description;
+		echo "<h1><a href='$link'>$title</a></h1><br><p>$description</p><br>";
+
+	}
+		?>
+</div>
+
+<div class="news3">
+	<?php
+	echo "<h2>Workout Playlists!</h2>";
+	ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)');
+	$xml = new SimpleXMLElement(file_get_contents("http://www.self.com/feed/playlists"));
+	for($i = 0; $i < 50; $i++){
+		$title = $xml->channel->item[$i]->title;
+		$link = $xml->channel->item[$i]->link;
+		$description = $xml->channel->item[$i]->description;
+		echo "<h1><a href='$link'>$title</a></h1><br><p>$description</p><br>";
+
+	}
+		?>
+</div>
+</div>
+<br><br><br>
 </body>
 </html>
 
