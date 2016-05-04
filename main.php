@@ -103,12 +103,16 @@ function displayForm() {
 			}
 	}
 	echo "</select>";
+	echo "<p>Search options</p>";
+	echo "Search by name <input type=\"text\" name=\"search\"/>";
 	echo "<p>Exercise options</p>";
 	echo '<select name="Exercise">
 			<option value="Select an exercise">Select an exercise</option>
 					<option value="Run">Run</option>
 					<option value="Cycle">Cycle</option>
 					<option value="Swim">Swim</option>
+					<option value="Tennis">Tennis</option>
+					<option value="Walk">Walk</option>
 			  </select>';
 	echo "<br><br>";
 	echo'<input type="submit" name="go">';
@@ -144,13 +148,24 @@ function displayForm() {
 		$find = "SELECT * FROM fooduser";
 		$history = "SELECT * FROM food";
 		if(isset($_GET["go"])){
-			phpcalc($_GET["foodchoice1"], $_GET["foodchoice2"], $_GET["foodchoice3"], $_GET["foodchoice4"], $_GET["foodchoice5"], $_GET["foodchoice6"], $_GET["foodchoice7"], $dbnow, $history, $_GET["Exercise"]);
+			phpcalc($_GET["foodchoice1"], $_GET["foodchoice2"], $_GET["foodchoice3"], $_GET["foodchoice4"], $_GET["foodchoice5"], $_GET["foodchoice6"], $_GET["foodchoice7"], $_GET["search"], $dbnow, $history, $_GET["Exercise"]);
 		}
+		?>
+		<form method="GET">
+			<button input="submit" name="delhistory">Delete History</button>
+		</form>
+		<?php
+			if (isset($_GET["delhistory"])) {
+				$dbnow = connect_to_db( "hwangmn" );
+				$delcomm = "DELETE FROM fooduser WHERE Email = \"".$_SESSION["user"]."\";";
+				perform_query($dbnow, $delcomm);
+			}
 		?>
 		</div>
 </form>
 </div>
-<br><br>
+
+<br><br><br>
 <table style="width:100%">
 	<tbody>
 		<tr>
@@ -163,12 +178,48 @@ function displayForm() {
 		<?php
 		$always = "SELECT * FROM fooduser ORDER BY InputTime ASC";
 		$dbnow = connect_to_db( "hwangmn" );
-
-		function phpcalc($a, $b, $c, $d, $e, $f, $g, $dbnow, $history, $exer){
+		function isvalidfoodcal($thisone) {
+			$command = "SELECT * FROM food";
+			$dbnow = connect_to_db( "hwangmn" );
+			$result = -10;
+			if ($r = perform_query($dbnow, $command)) {
+			    while ($row = mysqli_fetch_assoc($r)) {
+			    	if ($thisone == $row["Food"]) {
+			    		$result = $row["Calories"];
+			    	}
+			    }
+			}
+			if ($result != -10) {
+				return $result;
+			}
+			else {
+				return -10;
+			}
+		}
+		function isvalidfoodname($thisone) {
+			$command = "SELECT * FROM food";
+			$dbnow = connect_to_db( "hwangmn" );
+			$result = "";
+			if ($r = perform_query($dbnow, $command)) {
+			    while ($row = mysqli_fetch_assoc($r)) {
+			    	if ($thisone == $row["Food"]) {
+			    		$result = $row["Food"];
+			    	}
+			    }
+			}
+			if ($result != "") {
+				return $result;
+			}
+			else {
+				return "Select an option";
+			}
+		}
+		function phpcalc($a, $b, $c, $d, $e, $f, $g, $h, $dbnow, $history, $exer){
 			echo "
 			<fieldset>
 				<p id=\"result\"></p>
 			</fieldset>";
+			$h = isvalidfoodcal($h);
 			if ($r = perform_query($dbnow, $history)) {
 			    while ($row = mysqli_fetch_assoc($r)) {
 			    	if ($a == $row["Food"]) {
@@ -196,7 +247,7 @@ function displayForm() {
 			}
 
 		echo "<script type=\"text/javascript\">
-					calculate(".$a.",".$b.",".$c.",".$d.",".$e.",".$f.", ".$g.",\"".$exer."\");
+					calculate(".$a.",".$b.",".$c.",".$d.",".$e.",".$f.", ".$g.",".$h.",\"".$exer."\");
 				  </script>";
 		}
 
@@ -234,6 +285,7 @@ function displayForm() {
 				}
 			}
 		}
+
 		if (isset($_GET["go"])){
 			$getgoing = "SELECT * FROM food";
 			//INSERT INTO `fooduser` VALUES ("wudh@bc.edu", "Big Mac", now());
@@ -245,6 +297,7 @@ function displayForm() {
 			$six = $_GET["foodchoice5"];
 			$seven = $_GET["foodchoice6"];
 			$eight = $_GET["foodchoice7"];
+			$nine = isvalidfoodname($_GET["search"]);
 			if (isset($_GET["foodchoice1"])) {
 				if ($_GET["foodchoice1"] != "Select an option"){
 					if ($r = perform_query($dbnow, $getgoing)) {
@@ -325,7 +378,6 @@ function displayForm() {
 								}
 							}
 					}
-					echo $t6;
 					$comm6 = "INSERT INTO fooduser VALUES (\"$one\",\"$seven\", now(), \"$t6\", \"$c6\");";
 					perform_query($dbnow, $comm6);
 				}
@@ -340,10 +392,21 @@ function displayForm() {
 								}
 							}
 					}
-					echo $t7;
 					$comm7 = "INSERT INTO fooduser VALUES (\"$one\",\"$eight\", now(), \"$t7\", \"$c7\");";
 					perform_query($dbnow, $comm7);
 				}
+			}
+			if ($nine != "Select an option"){
+				if ($r = perform_query($dbnow, $getgoing)) {
+						while ($row = mysqli_fetch_assoc($r)) {
+							if ($row["Food"] == $nine){
+								$t8 = $row["Type"];
+								$c8 = $row["Calories"];
+							}
+						}
+				}
+				$comm8 = "INSERT INTO fooduser VALUES (\"$one\",\"$nine\", now(), \"$t8\", \"$c8\");";
+				perform_query($dbnow, $comm8);
 			}
 		}
 		all($dbnow, $always);

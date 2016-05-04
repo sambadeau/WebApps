@@ -6,124 +6,55 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" href="css/style10.css"/>
+	<link rel="stylesheet" href="bootstrap.css">
 	<script type="text/javascript"src="../include/valid.js"></script>
-	<style type="text/css">
-	#container{width:100%;}
-	#left{float:left;width:100px;}
-	#right{float:right;width:100px;}
-	#center{margin:0 auto;width:100px;}
-	.news {
-    overflow: auto;
-    height: 300px;
-    border: 3px groove blue;
-    width: 305px;
-    float:left;
-	}	
-	.news2 {
-    overflow: auto;
-    height: 300px;
-    border: 3px groove blue;
-    width: 250px;
-    float: center;
-	}	
-	.news3 {
-    overflow: auto;
-    height: 300px;
-    border: 3px groove blue;
-    width: 250px;
-    float: right;
-	}
-	
-	h1{
-		font-size: 20px;
-	}
-</style>
 	<meta charset="utf-8" />
 	<title>Welcome To Calorie Calculator</title>
+
+	<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 </head>
 <body>
-<<<<<<< HEAD
-	<pre><?php //print_r($_POST); ?></pre>
-<fieldset>
-	<h1>Diet Is Fun!</h1>
-	<img src="diet.jpg" alt="food pic" height="360" width="600">
 
-	<form action='dboperation.php'>
-		<input type="submit" name = "join" value= "Don't Have an Account? Sign Up!">
-=======
 	<div class="jumbotron">
 		<h1> Diet Is Easy & Fun <small> with Calorie Calulator</small> </h1>
 		<form action='dboperation.php'>
 		<input type="submit" name = "join" class="col-xs-5 col-md-3 col-lg-1 btn btn-info btn-md" value= "Sign Up!">
->>>>>>> origin/master
 	</form>
 
-	<fieldset>
+	<form method = 'post'>
+		<input type="submit" name = "pwlost" class="btn btn-danger btn-md col-xs-5 col-md-3 col-lg-1"  value= "Forgot Password?">
+	</form>
+
+	</div>
+	<div class = "container">
+
+	<img src="diet.jpg" align = "right" class = "img-responsive img-thumbnail img-rounded" alt="Norway" style="width:50%">
+
 		<legend> Please Login to Access Your Calorie Log! </legend>
 
 	<form method= 'post' name = 'myForm' onsubmit = 'return validateForm2()'>
-			E-mail:
-			<input type = 'text' name= 'email' size= '40'> <br>
-			PassWord:
-			<input type = 'text' name= 'pw' size= '40'> <br>
 
-			<input type='submit' value = 'Login' name = 'submit'> <br>
-	</form>
-<div id="container">
-<div class="news">
-	<?php
-	echo "<h2>Yahoo Fitness RSS Feed</h2>";
-	ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)');
-	$xml = new SimpleXMLElement(file_get_contents("http://www.self.com/feed/fitness"));
-	for($i = 0; $i < 50; $i++){
-		$title = $xml->channel->item[$i]->title;
-		$link = $xml->channel->item[$i]->link;
-		$description = $xml->channel->item[$i]->description;
-		echo "<h1><a href='$link'>$title</a></h1><br><p>$description</p><br>";
-		
-	}
-		?>
-</div>
+		<fieldset class="form-group">
+		<label> Username</label>
+		<input type="text" class="form-control" name= 'email' placeholder="Enter Username">
+		</fieldset>
 
-<<<<<<< HEAD
-	<form method = 'post'>
-			<input type="submit" name = "pwlost" value= "Forgot Your Password?">
+		<fieldset class="form-group">
+		<label>Password</label>
+	    <input type="password" name= 'pw' class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
+	  	</fieldset>
+
+		<input type='submit' value = 'Login' name = 'submit' class="btn btn-warning btn-lg" > <br>
 	</form>
 
-=======
-<div class="news">
-	<?php
-	echo "<h2>Fitness Gear RSS Feed</h2>";
-	ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)');
-	$xml = new SimpleXMLElement(file_get_contents("http://www.self.com/feed/fitness-gear"));
-	for($i = 0; $i < 50; $i++){
-		$title = $xml->channel->item[$i]->title;
-		$link = $xml->channel->item[$i]->link;
-		$description = $xml->channel->item[$i]->description;
-		echo "<h1><a href='$link'>$title</a></h1><br><p>$description</p><br>";
-		
-	}
-		?>
-</div>
-<div class="news">
-	<?php
-	echo "<h2>Workout Playlists!</h2>";
-	ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)');
-	$xml = new SimpleXMLElement(file_get_contents("http://www.self.com/feed/playlists"));
-	for($i = 0; $i < 50; $i++){
-		$title = $xml->channel->item[$i]->title;
-		$link = $xml->channel->item[$i]->link;
-		$description = $xml->channel->item[$i]->description;
-		echo "<h1><a href='$link'>$title</a></h1><br><p>$description</p><br>";
-		
-	}
-		?>
-</div>
-</div>
-</div>
-<br><br><br><br>
->>>>>>> origin/master
+	</div>
+
 	<?php
 
 			if ( isset( $_POST['pwlost'] ) )
@@ -131,6 +62,7 @@ session_start();
 	?>
 
 	</fieldset>
+
 
 	<?php
 
@@ -143,7 +75,9 @@ session_start();
 		if ( isset( $_POST['pwsubmit'] ) )
 			handle_form1( $_POST['email1']);
 	?>
+
 </fieldset>
+
 </body>
 </html>
 
@@ -170,7 +104,7 @@ function handle_form( $id, $pw){
 
 	while ($row = mysqli_fetch_array( $result, MYSQLI_ASSOC )){
 
-		$email = $row['email'];
+		$email = $row['username'];
 		$pw = $row['password'];
 
 		if ($useremail == $email) {
@@ -211,7 +145,7 @@ function handle_form1( $id ){
 			echo "Hi! Thanks for the enquery! Your Password will be sent to you shortly to your e-mail!";
 
 			$newpw = newpass();
-			$query1 = "UPDATE `food` SET `password` = sha1('$newpw') WHERE `email` = '$useremail' ";
+			$query1 = "UPDATE `accounts` SET `password` = sha1('$newpw') WHERE `email` = '$useremail' ";
 			perform_query($dbc, $query1);
 
 			mail("$useremail", "Your New Calorie Log Account Password!", $newpw);
