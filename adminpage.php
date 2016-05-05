@@ -67,6 +67,73 @@ include('dbconn.php');
 	?>
 
 	</form>
+	</div>
+
+	<br><br>
+
+	<div class= "panel panel-default">
+			  			<!-- Default panel contents -->
+			  			<div class= "panel-heading">Add A New Food</div>
+			  			<div class= "panel-body ">
+
+		  	</div>
+
+			<form method = 'post' name = 'myForm1' onsubmit = 'return validateForm1()'>
+			<fieldset class="form-group">
+			<label>New Food Name</label>
+			<input type="text" name= 'subject1' class="form-control" id="exampleInputEmail1" placeholder="Enter New Goodie">
+			</fieldset>
+
+			<fieldset class="form-group">
+			    <label>New Food Calorie</label>
+			    <input type="text" name= 'msg1' class="form-control" id="exampleInputEmail1" placeholder="How Fat Will One Get?">
+		  	</fieldset>
+
+		  	<fieldset class="form-group">
+				<label>New Food Type</label>
+				 <div class="radio">
+				  <label><input type="radio" name="optradio" value = 'Breakfast'>Breakfast</label>
+				</div>
+				<div class="radio">
+				  <label><input type="radio" name="optradio" value = 'Lunch'>Lunch</label>
+				</div>
+				<div class="radio">
+				 <label><input type="radio" name="optradio" value = 'Dinner'>Dinner</label>
+				</div>
+				<div class="radio">
+				  <label><input type="radio" name="optradio" value = 'Dessert'>Dessert</label>
+				</div>
+				<div class="radio">
+				<label><input type="radio" name="optradio" value = 'Drink'>Drink</label>
+				</div>
+				<div class="radio">
+			 <label><input type="radio" name="optradio" value = 'Grab and Go'>Grab and Go</label>
+				</div>
+				<div class="radio">
+				<label><input type="radio" name="optradio" value = 'Bakery'>Bakery</label>
+				</div>
+				<div class="radio">
+			  <label><input type="radio" name="optradio" value = 'Other'>Other</label>
+				</div>
+				<div class="radio">
+		  	</fieldset>
+
+
+
+		  	<fieldset class="form-group">
+			    <label> Shortest Dictator Ever Password</label>
+			    <input type="password" name= 'pw1' class="form-control" id="exampleInputPassword1" placeholder="It's Napoleon Also">
+		  	</fieldset>
+
+			<input type='submit' value = 'Add This Food' name = 'submit1'> <br>
+
+			<?php
+
+				if ( isset( $_POST['submit1'] ) )
+					handle_form1($_POST['pw1']);
+			?>
+
+	</form>
 
 </body>
 </html>
@@ -100,6 +167,26 @@ function handle_form($pw){
 		}
 	}
 
+
+	disconnect_from_db( $dbc, $result);
+	return;
+}
+
+function handle_form1($pw){
+	if (sha1($pw) != '1785ed6ccf537856a2e5d0935a1ffb2dde2d3ab5') {
+		echo "Invalid Napoleon Password... Can You Spell?";
+		return;
+	}
+
+	$dbc    = connect_to_db( "hwangmn" );
+	$query  = "select * from food";
+	$result = perform_query( $dbc, $query );
+	$subsub1	= $_POST['subject1'];
+	$msgmsg1 = $_POST['msg1'];
+	$optopt1 = $_POST['optradio'];
+
+	$newquery = "INSERT INTO `food` (Food, Calories, Type) VALUES ('$subsub1', '$msgmsg1', '$optopt1')";
+	perform_query( $dbc, $newquery );
 
 	disconnect_from_db( $dbc, $result);
 	return;
