@@ -182,7 +182,7 @@ function handle_form( $id, $pw){
 				session_unset();
 				$_SESSION["user"] = $email;
 				echo '<script type="text/javascript">
-				document.location="http://cscilab.bc.edu/~wudh/project/main.php";
+				document.location="http://cscilab.bc.edu/~hwangmn/final/main.php";
 				</script>';
 			}
 			else {

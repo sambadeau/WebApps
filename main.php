@@ -130,7 +130,7 @@ function displayMcForm() {
 					<option value="Walk">Walk</option>
 			  </select>';
 	echo "<br><br>";
-	echo'<input type="submit" name="mcgo">';
+	echo'<input type="submit" class="btn btn-default" value = "Log This Result" name="mcgo">';
 }
 function displaydunkinForm() {
 	$dbnow = connect_to_db( "hwangmn" );
@@ -202,7 +202,7 @@ function displaydunkinForm() {
 					<option value="Walk">Walk</option>
 			  </select>';
 	echo "<br><br>";
-	echo'<input type="submit" name="dunkingo">';
+	echo'<input type="submit" class="btn btn-default" value = "Log This Result" name="dunkingo">';
 }
 function displaychipForm() {
 	$dbnow = connect_to_db( "hwangmn" );
@@ -285,7 +285,7 @@ function displaychipForm() {
 					<option value="Walk">Walk</option>
 			  </select>';
 	echo "<br><br>";
-	echo'<input type="submit" name="chipgo">';
+	echo'<input type="submit" class="btn btn-default" value = "Log This Result" name="chipgo">';
 }
 function displayForm() {
 	$dbnow = connect_to_db( "hwangmn" );
@@ -400,7 +400,7 @@ function displayForm() {
 					<option value="Walk">Walk</option>
 			  </select>';
 	echo "<br><br>";
-	echo'<input type="submit" name="go">';
+	echo'<input type="submit" class="btn btn-default" value = "Log This Result" name="go">';
 }
 
 ?>
@@ -410,6 +410,13 @@ function displayForm() {
 <head>
 	<meta charset="utf-8" />
 	<title>Main Page</title>
+	<link rel="stylesheet" href="bootstrap.css">
+	<!-- Optional theme -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+			<!-- Latest compiled and minified JavaScript -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script>
 		       var map;
@@ -474,16 +481,38 @@ function displayForm() {
 <script src="calc.js"></script>
 <body>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDkrojz5Qd_N2slW5lIl78xMbWhWPOLUA&libraries=places&callback=initMap" async defer></script>
-<h1 style="text-align: center">Log in successful! Hello <?php echo $_SESSION["user"]; ?>!</h1>
+<div class="jumbotron">
+	<h1 style="text-align: center"> <small> Calorie Log Just For... </small><?php echo $_SESSION["user"]; ?>!</h1>
+	<form method="GET">
+		<button input="submit" class="col-xs-5 col-md-3 col-lg-1 btn btn-info btn-md" name="delhistory">Delete History</button>
+	</form>
+			<?php
+				if (isset($_GET["delhistory"])) {
+					$dbnow = connect_to_db( "hwangmn" );
+					$delcomm = "DELETE FROM fooduser WHERE Email = \"".$_SESSION["user"]."\";";
+					perform_query($dbnow, $delcomm);
+				}
+			?>
 
+	<form method="GET" >
+	<button input type="submit" class="btn btn-danger btn-md col-xs-5 col-md-3 col-lg-1" name="Logout" style="text-align: center">Log out</button>
+	</form>
+	<?php
+		if (isset($_GET["Logout"])) {
+			echo '<script type="text/javascript">
+					document.location="http://cscilab.bc.edu/~wudh/project/login.php";
+				</script>';
+		}
+	?>
+</div>
+<div class="container" align = "left">
 <select id="place" onchange="showcase()">
-	<option value="seleccionar" id="placeselect"> Select a place </option>
+	<option value="seleccionar" id="placeselect"> Select Where You Ate </option>
     <option value="uno" id="first"> BC Dining </option>
     <option value="dos" id="second"> McDonald's </option>
     <option value="tres" id="third"> Chipotle </option>
     <option value="cuatro" id="four"> Dunkin Donuts </option>
 </select>
-<div class="containall">
 <form name="myform" method="GET">
 	<div class="left" id = "Dunkin Donuts" style="display: none;">
 	<fieldset>
@@ -517,10 +546,8 @@ function displayForm() {
 			?>
 	</fieldset>
 	</div>
-		<div class="right">
-		<fieldset>
-			<p id="result"></p>
-		</fieldset>
+	</form>
+</div>
 		<?php
 		$dbnow = connect_to_db( "hwangmn" );
 		$find = "SELECT * FROM fooduser";
@@ -528,8 +555,14 @@ function displayForm() {
 		$mcfind = "SELECT * FROM mcdonalds";
 		$chipphp = "SELECT * FROM chipotle";
 		$dunkinphp = "SELECT * FROM dunkin";
-		echo '<p>Local Gyms to work off those calories you consumed!</p>
-			<div id="map" style="width:500px;height:380px;"></div>';
+		echo '<div align = "right" class = \"container\">
+		<div align = "right" style="width:200px" class="col-xs-3,col-xs-6,col-xs-3 panel panel-default">
+				<div class="panel-heading">Exercise Notification</div>
+		  		<div id = "result" class="panel-body">How Much Did You Eat Today?</div>
+  		</div>
+
+		<h1><small>Burn Those Calories in These Local Gyms...</small></h1>
+			<div id="map" style="width:500px;height:380px;"></div></div>';
 		if(isset($_GET["go"])){
 			phpcalc($_GET["foodchoice1"], $_GET["foodchoice2"], $_GET["foodchoice3"], $_GET["foodchoice4"], $_GET["foodchoice5"], $_GET["foodchoice6"], $_GET["foodchoice7"], $_GET["search"], $dbnow, $history, $_GET["Exercise"]);
 		}
@@ -543,22 +576,12 @@ function displayForm() {
 			phpdunkincalc($_GET["dunkinfoodchoice1"], $_GET["dunkinfoodchoice2"], $_GET["dunkinfoodchoice3"], $_GET["dunkinfoodchoice4"], $_GET["dunkinsearch"], $dbnow, $dunkinphp, $_GET["dunkinExercise"]);
 		}
 		?>
-		<form method="GET">
-			<button input="submit" name="delhistory">Delete History</button>
-		</form>
-		<?php
-			if (isset($_GET["delhistory"])) {
-				$dbnow = connect_to_db( "hwangmn" );
-				$delcomm = "DELETE FROM fooduser WHERE Email = \"".$_SESSION["user"]."\";";
-				perform_query($dbnow, $delcomm);
-			}
-		?>
 		</div>
 </form>
 </div>
 
 <br><br><br>
-<table style="width:100%">
+<table style="width:100%" class="table table-striped table-hover">
 	<tbody>
 		<tr>
 			<th>Email</th>
@@ -1259,17 +1282,6 @@ function displayForm() {
 		?>
 	</tbody>
 </table>
-<br><br>
-<form method="GET" >
-<button input type="submit" name="Logout" style="text-align: center">Log out</button>
-</form>
-<?php
-	if (isset($_GET["Logout"])) {
-		echo '<script type="text/javascript">
-				document.location="http://cscilab.bc.edu/~wudh/project/login.php";
-			</script>';
-	}
-?>
 
 </body>
 </html>
