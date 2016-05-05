@@ -185,7 +185,7 @@ function handle_form1($pw){
 	$msgmsg1 = $_POST['msg1'];
 	$optopt1 = $_POST['optradio'];
 
-	$newquery = "INSERT INTO `food` (Food, Calories, Type) VALUES ('$subsub1', '$msgmsg1', '$optopt1')";
+	$newquery = "INSERT INTO `admininput` (Food, Calories, Type) VALUES ('$subsub1', '$msgmsg1', '$optopt1')";
 	perform_query( $dbc, $newquery );
 
 	disconnect_from_db( $dbc, $result);
