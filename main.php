@@ -287,6 +287,121 @@ function displaychipForm() {
 	echo "<br><br>";
 	echo'<input type="submit" class="btn btn-default" value = "Log This Result" name="chipgo">';
 }
+function displayadminForm() {
+	$dbnow = connect_to_db( "hwangmn" );
+	$find = "SELECT * FROM fooduser";
+	$find1 = "SELECT * FROM admininput WHERE Type = \"Breakfast\"";
+	$find2 = "SELECT * FROM admininput WHERE Type = \"Lunch\"";
+	$find3 = "SELECT * FROM admininput WHERE Type = \"Dinner\"";
+	$find4 = "SELECT * FROM admininput WHERE Type = \"Dessert\"";
+	$find5 = "SELECT * FROM admininput WHERE Type = \"Drink\"";
+	$find6 = "SELECT * FROM admininput WHERE Type = \"Grab and Go\"";
+	$find7 = "SELECT * FROM admininput WHERE Type = \"Bakery\"";
+	echo "<p>Breakfast options</p>";
+	echo '<select name="adminfoodchoice1">';
+		echo '<option value="Select an option">Select an option</option>';
+	if ($r = perform_query($dbnow, $find1)) {
+		while ($row = mysqli_fetch_assoc($r)) {
+			if ($row["Food"] != "Select an option"){
+				$name = $row["Food"];
+				$c = $row["Calories"];
+				echo "<option value=\"".$name."\">".$name."</option>";
+			}
+		}
+	}
+	echo "</select>";
+	echo "<p>Lunch options</p>";
+	echo '<select name="adminfoodchoice2">';
+		echo '<option value="Select an option">Select an option</option>';
+	if ($r = perform_query($dbnow, $find2)) {
+			while ($row = mysqli_fetch_assoc($r)) {
+				if ($row["Food"] != "Select an option"){
+					$name = $row["Food"];
+					$c = $row["Calories"];
+					echo "<option value=\"".$name."\">".$name."</option>";
+				}
+			}
+	}
+	echo "</select>";
+	echo "<p>Dinner options</p>";
+	echo '<select name="adminfoodchoice3">';
+		echo '<option value="Select an option">Select an option</option>';
+	if ($r = perform_query($dbnow, $find3)) {
+			while ($row = mysqli_fetch_assoc($r)) {
+				if ($row["Food"] != "Select an option"){
+					$name = $row["Food"];
+					$c = $row["Calories"];
+					echo "<option value=\"".$name."\">".$name."</option>";
+				}
+			}
+	}
+	echo "</select>";
+	echo "<p>Dessert options</p>";
+	echo '<select name="adminfoodchoice4">';
+		echo '<option value="Select an option">Select an option</option>';
+	if ($r = perform_query($dbnow, $find4)) {
+			while ($row = mysqli_fetch_assoc($r)) {
+				if ($row["Food"] != "Select an option"){
+					$name = $row["Food"];
+					$c = $row["Calories"];
+					echo "<option value=\"".$name."\">".$name."</option>";
+				}
+			}
+	}
+	echo "</select>";
+	echo "<p>Drink options</p>";
+	echo '<select name="adminfoodchoice5">';
+		echo '<option value="Select an option">Select an option</option>';
+	if ($r = perform_query($dbnow, $find5)) {
+			while ($row = mysqli_fetch_assoc($r)) {
+				if ($row["Food"] != "Select an option"){
+					$name = $row["Food"];
+					$c = $row["Calories"];
+					echo "<option value=\"".$name."\">".$name."</option>";
+				}
+			}
+	}
+	echo "</select>";
+	echo "<p>Grab and Go options</p>";
+	echo '<select name="adminfoodchoice6">';
+		echo '<option value="Select an option">Select an option</option>';
+	if ($r = perform_query($dbnow, $find6)) {
+			while ($row = mysqli_fetch_assoc($r)) {
+				if ($row["Food"] != "Select an option"){
+					$name = $row["Food"];
+					$c = $row["Calories"];
+					echo "<option value=\"".$name."\">".$name."</option>";
+				}
+			}
+	}
+	echo "</select>";
+	echo "<p>Bakery options</p>";
+	echo '<select name="adminfoodchoice7">';
+		echo '<option value="Select an option">Select an option</option>';
+	if ($r = perform_query($dbnow, $find7)) {
+			while ($row = mysqli_fetch_assoc($r)) {
+				if ($row["Food"] != "Select an option"){
+					$name = $row["Food"];
+					$c = $row["Calories"];
+					echo "<option value=\"".$name."\">".$name."</option>";
+				}
+			}
+	}
+	echo "</select>";
+	echo "<p>Search options</p>";
+	echo "Search by name <input type=\"text\" name=\"adminsearch\"/>";
+	echo "<p>Exercise options</p>";
+	echo '<select name="adminExercise">
+			<option value="Select an exercise">Select an exercise</option>
+					<option value="Run">Run</option>
+					<option value="Cycle">Cycle</option>
+					<option value="Swim">Swim</option>
+					<option value="Tennis">Tennis</option>
+					<option value="Walk">Walk</option>
+			  </select>';
+	echo "<br><br>";
+	echo'<input type="submit" class="btn btn-default" value = "Log This Result" name="admingo">';
+}
 function displayForm() {
 	$dbnow = connect_to_db( "hwangmn" );
 	$find = "SELECT * FROM fooduser";
@@ -512,8 +627,17 @@ function displayForm() {
     <option value="dos" id="second"> McDonald's </option>
     <option value="tres" id="third"> Chipotle </option>
     <option value="cuatro" id="four"> Dunkin Donuts </option>
+    <option value="cinco" id="five"> Admin Inputs </option>
 </select>
 <form name="myform" method="GET">
+	<div class="left" id = "Admininsert" style="display: none;">
+	<fieldset>
+	<legend><strong>Select your answer below from Admin Inputs!</strong></legend>
+			<?php
+				displayadminForm();
+			?>
+	</fieldset>
+	</div>
 	<div class="left" id = "Dunkin Donuts" style="display: none;">
 	<fieldset>
 	<legend><strong>Select your answer below from Dunkin Donuts!</strong></legend>
@@ -555,6 +679,7 @@ function displayForm() {
 		$mcfind = "SELECT * FROM mcdonalds";
 		$chipphp = "SELECT * FROM chipotle";
 		$dunkinphp = "SELECT * FROM dunkin";
+		$adminphp = "SELECT * FROM admininput";
 		echo '<div align = "right" class = \"container\">
 		<div align = "right" style="width:200px" class="col-xs-3,col-xs-6,col-xs-3 panel panel-default">
 				<div class="panel-heading">Exercise Notification</div>
@@ -574,6 +699,9 @@ function displayForm() {
 		}
 		if(isset($_GET["dunkingo"])){
 			phpdunkincalc($_GET["dunkinfoodchoice1"], $_GET["dunkinfoodchoice2"], $_GET["dunkinfoodchoice3"], $_GET["dunkinfoodchoice4"], $_GET["dunkinsearch"], $dbnow, $dunkinphp, $_GET["dunkinExercise"]);
+		}
+		if(isset($_GET["admingo"])){
+			phpcalc($_GET["adminfoodchoice1"], $_GET["adminfoodchoice2"], $_GET["adminfoodchoice3"], $_GET["adminfoodchoice4"], $_GET["adminfoodchoice5"], $_GET["adminfoodchoice6"], $_GET["adminfoodchoice7"], $_GET["adminsearch"], $dbnow, $adminphp, $_GET["adminExercise"]);
 		}
 		?>
 		</div>
@@ -598,8 +726,16 @@ function displayForm() {
 			$mccomm = "SELECT * FROM mcdonalds";
 			$chipcomm = "SELECT * FROM chipotle";
 			$dunkincomm = "SELECT * FROM dunkin";
+			$admincomm = "SELECT * FROM admininput";
 			$dbnow = connect_to_db( "hwangmn" );
 			$result = -10;
+			if ($r = perform_query($dbnow, $admincomm)) {
+			    while ($row = mysqli_fetch_assoc($r)) {
+			    	if ($thisone == $row["Food"]) {
+			    		$result = $row["Calories"];
+			    	}
+			    }
+			}
 			if ($r = perform_query($dbnow, $command)) {
 			    while ($row = mysqli_fetch_assoc($r)) {
 			    	if ($thisone == $row["Food"]) {
@@ -640,8 +776,16 @@ function displayForm() {
 			$mccomm = "SELECT * FROM mcdonalds";
 			$chipcomm = "SELECT * FROM chipotle";
 			$dunkincomm = "SELECT * FROM dunkin";
+			$admincomm = "SELECT * FROM admininput";
 			$dbnow = connect_to_db( "hwangmn" );
 			$result = "";
+			if ($r = perform_query($dbnow, $admincomm)) {
+			    while ($row = mysqli_fetch_assoc($r)) {
+			    	if ($thisone == $row["Food"]) {
+			    		$result = $row["Food"];
+			    	}
+			    }
+			}
 			if ($r = perform_query($dbnow, $command)) {
 			    while ($row = mysqli_fetch_assoc($r)) {
 			    	if ($thisone == $row["Food"]) {
@@ -1154,6 +1298,129 @@ function displayForm() {
 						$comm9 = "INSERT INTO fooduser VALUES (\"$one\",\"$ten\", now(), \"$t9\", \"$c9\");";
 						perform_query($dbnow, $comm9);
 					}
+		}
+		if (isset($_GET["admingo"])){
+			$getgoing = "SELECT * FROM admininput";
+			//INSERT INTO `fooduser` VALUES ("wudh@bc.edu", "Big Mac", now());
+			$one = $_SESSION["user"];
+			$two = $_GET["adminfoodchoice1"];
+			$three = $_GET["adminfoodchoice2"];
+			$four = $_GET["adminfoodchoice3"];
+			$five = $_GET["adminfoodchoice4"];
+			$six = $_GET["adminfoodchoice5"];
+			$seven = $_GET["adminfoodchoice6"];
+			$eight = $_GET["adminfoodchoice7"];
+			$nine = isvalidfoodname($_GET["adminsearch"]);
+			if (isset($_GET["adminfoodchoice1"])) {
+				if ($_GET["adminfoodchoice1"] != "Select an option"){
+					if ($r = perform_query($dbnow, $getgoing)) {
+							while ($row = mysqli_fetch_assoc($r)) {
+								if ($row["Food"] == $two){
+									$t1 = $row["Type"];
+									$c1 = $row["Calories"];
+								}
+							}
+					}
+					$comm1 = "INSERT INTO fooduser VALUES (\"$one\",\"$two\", now(), \"$t1\", \"$c1\");";
+					perform_query($dbnow, $comm1);
+				}
+			}
+			if (isset($_GET["adminfoodchoice2"])) {
+				if ($_GET["adminfoodchoice2"] != "Select an option"){
+					if ($r = perform_query($dbnow, $getgoing)) {
+							while ($row = mysqli_fetch_assoc($r)) {
+								if ($row["Food"] == $three){
+									$t2 = $row["Type"];
+									$c2 = $row["Calories"];
+								}
+							}
+					}
+					$comm2 = "INSERT INTO fooduser VALUES (\"$one\",\"$three\", now(), \"$t2\", \"$c2\");";
+					perform_query($dbnow, $comm2);
+				}
+			}
+			if (isset($_GET["adminfoodchoice3"])) {
+				if ($_GET["adminfoodchoice3"] != "Select an option"){
+					if ($r = perform_query($dbnow, $getgoing)) {
+							while ($row = mysqli_fetch_assoc($r)) {
+								if ($row["Food"] == $four){
+									$t3 = $row["Type"];
+									$c3 = $row["Calories"];
+								}
+							}
+					}
+					$comm3 = "INSERT INTO fooduser VALUES (\"$one\",\"$four\", now(), \"$t3\", \"$c3\");";
+					perform_query($dbnow, $comm3);
+				}
+			}
+			if (isset($_GET["adminfoodchoice4"])) {
+				if ($_GET["adminfoodchoice4"] != "Select an option"){
+					if ($r = perform_query($dbnow, $getgoing)) {
+							while ($row = mysqli_fetch_assoc($r)) {
+								if ($row["Food"] == $five){
+									$t4 = $row["Type"];
+									$c4 = $row["Calories"];
+								}
+							}
+					}
+					$comm4 = "INSERT INTO fooduser VALUES (\"$one\",\"$five\", now(), \"$t4\", \"$c4\");";
+					perform_query($dbnow, $comm4);
+				}
+			}
+			if (isset($_GET["adminfoodchoice5"])) {
+				if ($_GET["adminfoodchoice5"] != "Select an option"){
+					if ($r = perform_query($dbnow, $getgoing)) {
+							while ($row = mysqli_fetch_assoc($r)) {
+								if ($row["Food"] == $six){
+									$t5 = $row["Type"];
+									$c5 = $row["Calories"];
+								}
+							}
+					}
+					$comm5 = "INSERT INTO fooduser VALUES (\"$one\",\"$six\", now(), \"$t5\", \"$c5\");";
+					perform_query($dbnow, $comm5);
+				}
+			}
+			if (isset($_GET["adminfoodchoice6"])) {
+				if ($_GET["adminfoodchoice6"] != "Select an option"){
+					if ($r = perform_query($dbnow, $getgoing)) {
+							while ($row = mysqli_fetch_assoc($r)) {
+								if ($row["Food"] == $seven){
+									$t6 = $row["Type"];
+									$c6 = $row["Calories"];
+								}
+							}
+					}
+					$comm6 = "INSERT INTO fooduser VALUES (\"$one\",\"$seven\", now(), \"$t6\", \"$c6\");";
+					perform_query($dbnow, $comm6);
+				}
+			}
+			if (isset($_GET["adminfoodchoice7"])) {
+				if ($_GET["adminfoodchoice7"] != "Select an option"){
+					if ($r = perform_query($dbnow, $getgoing)) {
+							while ($row = mysqli_fetch_assoc($r)) {
+								if ($row["Food"] == $eight){
+									$t7 = $row["Type"];
+									$c7 = $row["Calories"];
+								}
+							}
+					}
+					$comm7 = "INSERT INTO fooduser VALUES (\"$one\",\"$eight\", now(), \"$t7\", \"$c7\");";
+					perform_query($dbnow, $comm7);
+				}
+			}
+			if ($nine != "Select an option"){
+				if ($r = perform_query($dbnow, $getgoing)) {
+						while ($row = mysqli_fetch_assoc($r)) {
+							if ($row["Food"] == $nine){
+								$t8 = $row["Type"];
+								$c8 = $row["Calories"];
+							}
+						}
+				}
+				$comm8 = "INSERT INTO fooduser VALUES (\"$one\",\"$nine\", now(), \"$t8\", \"$c8\");";
+				perform_query($dbnow, $comm8);
+			}
 		}
 		if (isset($_GET["go"])){
 			$getgoing = "SELECT * FROM food";

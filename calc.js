@@ -1,5 +1,5 @@
 function showcase() {
-	x = ["BC", "Mcdonald's", "Chipotle", "Dunkin Donuts"];
+	x = ["BC", "Mcdonald's", "Chipotle", "Dunkin Donuts", "Admininsert"];
 	xlen = x.length;
 	for (i = 0; i < xlen; i++) {
 		document.getElementById(x[i]).style = "display: none;";
@@ -15,6 +15,9 @@ function showcase() {
 	}
 	if(document.getElementById('place').value == "cuatro") {
 		document.getElementById("Dunkin Donuts").style = "display: block;";
+	}
+	if(document.getElementById('place').value == "cinco") {
+		document.getElementById("Admininsert").style = "display: block;";
 	}
 }
 function mcdonaldscalculate(a, b, c, d, e, f, g, h, i, newone, checking) {
